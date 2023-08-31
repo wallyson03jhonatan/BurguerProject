@@ -73,7 +73,7 @@
 
       },
       async sendBurguerData(){
-        console.log('Criou o burguer');
+        console.log('Create a burguer!!!');
       },
     },
     mounted() {
