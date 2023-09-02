@@ -19,9 +19,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1rem 3.125rem;
+    padding: 1rem 3rem;
     background: #222;
-    border-bottom: 0.25rem solid #111;
   }
   .nav .logo__url {
     margin: auto;
@@ -35,7 +34,7 @@
     margin: 0.75rem;
     color: #FCBA03;
     text-decoration: none;
-    transition: .5s
+    transition: .3s
   }
   .nav a:hover {
     color: #FFF

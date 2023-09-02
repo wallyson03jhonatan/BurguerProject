@@ -93,8 +93,8 @@
     margin-bottom: 1rem;
   }
   .label {
-    margin-bottom: 1rem;
-    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
     border-left: 4px solid #FCBA03;
     font-weight: 600;
     color: #222;
