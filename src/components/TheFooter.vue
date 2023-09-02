@@ -15,10 +15,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 14rem;
-  width: 100%;
-  background: #222;
-  border-top: 0.25rem solid #111;
+  height: 25vh;
+  width: 100vw;
+  background: #222222;
   color: #FCBA03;
  }
 </style>
