@@ -4,24 +4,24 @@
     <div>
       <form class="buguer-form" @submit.prevent="sendBurguerData()">
 
-        <div class="container__input">
-          <label class="label" for="name">Write your name:</label>
-          <input class="input" type="text" name="name" :value="name" placeholder="Ex: Naruto...">
+        <div class="container-forms">
+          <label for="name">Write your name:</label>
+          <input type="text" name="name" v-model="name" placeholder="Ex: Naruto...">
         </div>
 
-        <div class="container__input">
-          <label class="label" for="bread">Choose your bread:</label>
-            <select class="select" name="bread">
-              <option value="">Select your bread</option>
+        <div class="container-forms">
+          <label for="bread">Choose your bread:</label>
+            <select name="bread">
+              <option>Select your bread</option>
               <option v-for="bread in getBreads" :key="bread.id" value="bread.tipo">
                 {{ bread.tipo }}
               </option>
             </select>
         </div>
 
-        <div class="container__input">
-          <label class="label" for="steak">Choose your steak:</label>
-            <select class="select" name="steak">
+        <div class="container-forms">
+          <label for="steak">Choose your steak:</label>
+            <select name="steak">
               <option value="">Select your steak</option>
               <option v-for="steak in getSteaks" :key="steak.id" value="steak.tipo">
                 {{ steak.tipo }}
@@ -29,16 +29,16 @@
             </select>
         </div>
 
-        <div class="container__input container__input--optionals">
-          <label class="label label__opcionais--title" for="optionals">Choose your optinal ingredients:</label>
-          <div class="container__checkbox" v-for="option in getOptions" :key="option.id">
-            <input class="input container__checkbox--input" type="checkbox" name="sendOptions" v-model="sendOptions" :value="option.tipo">
-            <span class="container__checkbox--span">{{ option.tipo }}</span>
+        <div class="container-forms container-optionals">
+          <label class="opcionais" for="optionals">Choose your optinal ingredients:</label>
+          <div class="container-checkbox" v-for="option in getOptions" :key="option.id">
+            <input class="checkbox__input" type="checkbox" name="sendOptions" v-model="sendOptions" :value="option.tipo">
+            <span class="checkbox__span">{{ option.tipo }}</span>
           </div>  
         </div>
 
-        <div class="container__input">
-          <input class="input btn__submit" type="submit" name="btn-submit" value="Create burguer">
+        <div class="container-forms">
+          <input class="btn__submit" type="submit" name="btn-submit" value="Create burguer">
         </div>
 
       </form>
@@ -87,40 +87,40 @@
     max-width: 25rem;
     margin: 0 auto;
   }
-  .container__input {
+  .container-forms {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
   }
-  .label {
+  label {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     border-left: 4px solid #FCBA03;
     font-weight: 600;
     color: #222;
   }
-  .input, .select {
+  input, select {
     padding: 0.5rem 0.75rem;
-    width: 18.75rem;
+    width: 100%;
   }
-  .container__input--optionals {
+  .container-optionals {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .label__opcionais--title {
+  label .opcionais {
     width: 100%;
   }
-  .container__checkbox {
+  .container-checkbox {
     display: flex;
     align-items: flex-start;
     width: 50%;
     margin-bottom: 1rem;
   }
-  .container__checkbox--span,
-  .container__checkbox--input {
+  .checkbox__span,
+  .checkbox__input {
     width: auto;
   }
-  .container__checkbox--span{
+  .checkbox__span{
     margin-left: 0.5rem;
     font-weight: 600;
   }
