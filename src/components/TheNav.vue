@@ -34,7 +34,7 @@
     margin: 0.75rem;
     color: #FCBA03;
     text-decoration: none;
-    transition: .3s
+    transition: 0.3s
   }
   .nav a:hover {
     color: #FFF
