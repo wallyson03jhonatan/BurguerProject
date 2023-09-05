@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>Message component</p>
     <div>
       <form class="buguer-form" @submit.prevent="sendBurguerData()">
 
@@ -11,20 +10,20 @@
 
         <div class="container-forms">
           <label for="bread">Choose your bread:</label>
-            <select name="bread">
+            <select name="bread" v-model="sendBread">
               <option>Select your bread</option>
-              <option v-for="bread in getBreads" :key="bread.id" value="bread.tipo">
-                {{ bread.tipo }}
+              <option v-for="bread in getBreads" :key="bread.id" :value="bread.type">
+                {{ bread.type }}
               </option>
             </select>
         </div>
 
         <div class="container-forms">
           <label for="steak">Choose your steak:</label>
-            <select name="steak">
+            <select name="steak" v-model="sendSteak">
               <option value="">Select your steak</option>
-              <option v-for="steak in getSteaks" :key="steak.id" value="steak.tipo">
-                {{ steak.tipo }}
+              <option v-for="steak in getSteaks" :key="steak.id" :value="steak.type">
+                {{ steak.type }}
               </option>
             </select>
         </div>
@@ -32,8 +31,8 @@
         <div class="container-forms container-optionals">
           <label class="opcionais" for="optionals">Choose your optinal ingredients:</label>
           <div class="container-checkbox" v-for="option in getOptions" :key="option.id">
-            <input class="checkbox__input" type="checkbox" name="sendOptions" v-model="sendOptions" :value="option.tipo">
-            <span class="checkbox__span">{{ option.tipo }}</span>
+            <input class="checkbox__input" type="checkbox" name="sendOptions" v-model="sendOptions" :value="option.type">
+            <span class="checkbox__span">{{ option.type }}</span>
           </div>  
         </div>
 
@@ -52,31 +51,54 @@
     data() {
       return {
         name: '',
+        msg: null,
+
         getBreads: null,
         getSteaks: null,
         getOptions: null,
+
         sendBread: null,
         sendSteak: null,
         sendOptions: [],
-        status: 'Solicitado',
-        msg: null,
       }
     },
     methods: {
       async getBurguerIngredients() {
-        const request = await fetch("//localhost:3000/ingredientes");
+        const request = await fetch("//localhost:3000/ingredients");
         const response = await request.json()
        
-        this.getBreads = response.paes;
-        this.getSteaks = response.carnes;
-        this.getOptions = response.opcionais;
+        this.getBreads = response.breads;
+        this.getSteaks = response.steaks;
+        this.getOptions = response.optionals;
 
       },
       async sendBurguerData(){
-        console.log('Create a burguer!!!');
+        const data = {
+          name: this.name,
+          steak: this.sendSteak,
+          bread: this.sendBread,
+          optionals: Array.from(this.sendOptions),
+          status: 'Requested',
+        }
+
+        const dataJson = JSON.stringify(data);
+        
+        const request = await fetch("//localhost:3000/burguers", {
+          method: "POST",
+          headers: { "content-Type": "application/json" },
+          body: dataJson,
+        })
+
+        const response = await request.json();
+        console.log(response);
+
+        this.name = '';
+        this.sendSteak = '';
+        this.sendBread = '';
+        this.sendOptions = '';
       },
     },
-    mounted() {
+    created() {
       this.getBurguerIngredients();
     },
   }
@@ -95,7 +117,7 @@
   label {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
-    border-left: 4px solid #FCBA03;
+    border-left: 0.25rem solid #FCBA03;
     font-weight: 600;
     color: #222;
   }
@@ -128,7 +150,7 @@
     margin: 0 auto;
     padding: 0.75rem;
     background-color: #222;
-    border: 2px solid #222;
+    border: 0.125rem solid #222;
     color:#FCBA03;
     font-weight: 600;
     font-size: 1rem;

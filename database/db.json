@@ -1,81 +1,92 @@
 {
-  "ingredientes": {
-    "paes": [
+  "ingredients": {
+    "breads": [
       {
         "id": 1,
-        "tipo": "Italiano Branco"
+        "type": "Roll"
       },
       {
         "id": 2,
-        "tipo": "3 Queijos"
+        "type": "Burger bun"
       },
       {
         "id": 3,
-        "tipo": "Parmesão e Orégano"
+        "type": "Baguette"
       },
       {
         "id": 4,
-        "tipo": "Integral"
+        "type": "Wholemeal"
       }
     ],
-    "carnes": [
+    "steaks": [
       {
         "id": 1,
-        "tipo": "Maminha"
+        "type": "Rump skirt"
       },
       {
         "id": 2,
-        "tipo": "Alcatra"
+        "type": "Rump steak"
       },
       {
         "id": 3,
-        "tipo": "Picanha"
+        "type": "Rump cap"
       },
       {
         "id": 4,
-        "tipo": "Veggie burger"
+        "type": "Veggie burger"
       }
     ],
-    "opcionais": [
+    "optionals": [
       {
         "id": 1,
-        "tipo": "Bacon"
+        "type": "Bacon"
       },
       {
         "id": 2,
-        "tipo": "Cheddar"
+        "type": "Cheddar"
       },
       {
         "id": 3,
-        "tipo": "Salame"
+        "type": "Salami"
       },
       {
         "id": 4,
-        "tipo": "Tomate"
+        "type": "Tomato"
       },
       {
         "id": 4,
-        "tipo": "Cebola roxa"
+        "type": "Purple Onion"
       },
       {
         "id": 4,
-        "tipo": "Pepino"
+        "type": "Cucumber"
       }
     ]
   },
   "status": [
     {
       "id": 1,
-      "tipo": "Solicitado"
+      "type": "Requested"
     },
     {
       "id": 2,
-      "tipo": "Em produção"
+      "type": "In preparation"
     },
     {
       "id": 3,
-      "tipo": "Finalizado"
+      "type": "Completed"
     }
   ],
-  "burgers": []
+  "burguers": [
+    {
+      "name": "Wallyson",
+      "steak": "Rump cap",
+      "bread": "Burger bun",
+      "optionals": [
+        "Tomato"
+      ],
+      "status": "Requested",
+      "id": 1
+    }
+  ]
 }
