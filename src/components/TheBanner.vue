@@ -18,12 +18,13 @@
     height: 50vh;
 
     background-image: url('/img/burguer.jpg'); 
-    background-position: 0 60%; 
+    background-position: 0 65%; 
     background-size: cover;
     background-repeat: no-repeat;
   }
   .banner .banner__text {
     padding: 1.25rem;
+    margin: 2rem;
     font-size: 3rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.3); 

@@ -2,7 +2,7 @@
   <div>
     <the-banner />
     <div class="container">
-      <h1>{{ title }}</h1>
+      <h1 class="bottom-margin-small">{{ title }}</h1>
       <base-form />
     </div>
   </div>
@@ -40,5 +40,7 @@
 </script>
 
 <style scoped>
-
+.bottom-margin-small {
+  margin-bottom: 0.5rem;
+}
 </style>
