@@ -40,7 +40,7 @@
 </script>
 
 <style scoped>
-.bottom-margin-small {
-  margin-bottom: 0.5rem;
-}
+  .bottom-margin-small {
+    margin-bottom: .5rem;
+  }
 </style>

@@ -55,10 +55,10 @@
   flex-direction: column;
   }
   .margin-x-small {
-  margin: 0.25rem
+  margin: .25rem
   }
   .margin-small {
-  margin: 0.5rem
+  margin: .5rem
   }
   .social-links {
     display: flex;
@@ -69,7 +69,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.75rem;
+    padding: .75rem;
     border-radius: 25%;
     cursor: pointer;
     text-decoration: none;
@@ -78,11 +78,11 @@
   .social-links a:hover {
     background: #f9f9f9;
     color: #222222;
-    transition: 0.5s;
+    transition: .5s;
   }
   .text-footer {
     font-size: 1rem;
-    padding: 0.25rem
+    padding: .25rem
   }
   .text-footer a{
     text-decoration: none;
