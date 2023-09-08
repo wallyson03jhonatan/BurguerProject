@@ -1,5 +1,6 @@
 <template>
   <div>
+    <base-message :msg="msg" v-show="msg"/>
     <div>
       <form class="buguer-form" @submit.prevent="sendBurguerData()">
 
@@ -46,8 +47,13 @@
 </template>
 
 <script>
+  import BaseMessage from './BaseMessage.vue';
+
   export default {
     name: 'BaseForm',
+    components: {
+      BaseMessage,
+    },
     data() {
       return {
         name: '',
@@ -90,12 +96,18 @@
         })
 
         const response = await request.json();
-        console.log(response);
 
-        this.name = '';
-        this.sendSteak = '';
-        this.sendBread = '';
-        this.sendOptions = '';
+        if (response.id) {
+          this.msg = `Order Nº ${response.id} made with success`;
+
+          setTimeout(() => {
+            this.msg = '';
+            this.name = '';
+            this.sendSteak = '';
+            this.sendBread = '';
+            this.sendOptions = '';
+          }, 3000);
+        }  
       },
     },
     created() {
@@ -115,14 +127,14 @@
     margin-bottom: 1rem;
   }
   label {
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    border-left: 0.25rem solid #FCBA03;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    border-left: .25rem solid #FCBA03;
     font-weight: 600;
     color: #222;
   }
   input, select {
-    padding: 0.5rem 0.75rem;
+    padding: .5rem .75rem;
     width: 100%;
   }
   .container-optionals {
@@ -143,14 +155,14 @@
     width: auto;
   }
   .checkbox__span{
-    margin-left: 0.5rem;
+    margin-left: .5rem;
     font-weight: 600;
   }
   .btn__submit {
     margin: 0 auto;
-    padding: 0.75rem;
+    padding: .75rem;
     background-color: #222;
-    border: 0.125rem solid #222;
+    border: .125rem solid #222;
     color:#FCBA03;
     font-weight: 600;
     font-size: 1rem;
