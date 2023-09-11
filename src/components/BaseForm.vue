@@ -1,6 +1,10 @@
 <template>
   <div>
-    <base-message :msg="msg" v-show="msg"/>
+    <base-message 
+      v-show="msg && msgType != null"
+      :msg="msg" 
+      :msgType="msgType" 
+    />
     <div>
       <form class="buguer-form" @submit.prevent="sendBurguerData()">
 
@@ -58,6 +62,7 @@
       return {
         name: '',
         msg: null,
+        msgType: null,
 
         getBreads: null,
         getSteaks: null,
@@ -99,16 +104,27 @@
 
         if (response.id) {
           this.msg = `Order Nº ${response.id} made with success`;
+          this.msgType = 'success';
 
-          setTimeout(() => {
-            this.msg = '';
-            this.name = '';
-            this.sendSteak = '';
-            this.sendBread = '';
-            this.sendOptions = '';
+          setTimeout(async () => {
+            this.cleanData();
           }, 3000);
         }  
       },
+      cleanData() {
+        
+        
+        const cleanedData = [
+          this.name = null,
+          this.sendSteak = null,
+          this.sendBread = null,
+          this.sendOptions = null,
+          this.msg = null,
+          this.msgType = null,
+        ]
+
+        return cleanedData;
+      }
     },
     created() {
       this.getBurguerIngredients();
