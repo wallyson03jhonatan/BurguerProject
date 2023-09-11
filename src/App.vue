@@ -37,9 +37,3 @@
     min-height: 16rem;
   }
 </style>
-<!-- 480px // Extra small screen
-768px // Small screen
-992px // Medium screen
-1200px // Large screen
-1600px // Extra Large screen
-1900px // Extra Large screen -->
