@@ -28,7 +28,7 @@
     overflow-x: hidden;
   } 
   h1 {
-    font-size: 2rem;
+    font-size: clamp(1rem, 1rem + 1vw, 3rem);
     text-align: center;
     color: #222;
   }

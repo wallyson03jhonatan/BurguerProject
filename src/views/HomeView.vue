@@ -1,35 +1,29 @@
 <template>
-  <div>
-    <the-banner />
-    <div class="container">
-      <h1 class="bottom-margin-small">{{ title }}</h1>
-      <base-form />
-    </div>
+  <div class="container">
+    <h1 class="bottom-margin-small">{{ title }}</h1>
+    <base-form />
   </div>
 </template>
 
 <script>
-  import TheBanner from "../components/TheBanner.vue";
   import BaseForm from "../components/BaseForm.vue";
 
   export default {
     name: 'HomeView',
     components: {
-      TheBanner,
       BaseForm, 
     },
     data() {
       return {
-        title: 'Choose your ingredients',
+        title: null,
       }
     },
     methods: {
       resize() {
-        if (window.innerWidth <= 991) this.title = 'Make your burger';
+        this.title = window.innerWidth <= 991 ? 'Make your burger': 'Choose your ingredients';
          
         window.addEventListener('resize', () => {
-          if (window.innerWidth <= 991) return this.title = 'Make your burger';
-          this.title = 'Choose your ingredients';
+          return this.title = window.innerWidth <= 991 ? 'Make your burger': 'Choose your ingredients';
         });
       },
     },

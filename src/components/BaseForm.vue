@@ -112,8 +112,6 @@
         }  
       },
       cleanData() {
-        
-        
         const cleanedData = [
           this.name = null,
           this.sendSteak = null,
