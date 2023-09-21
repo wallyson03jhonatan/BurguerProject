@@ -1,0 +1,128 @@
+/*------------------ General padding ----------------------*/
+.padding-x-small {
+  padding: .25rem;
+}
+.padding-small {
+  padding: .5rem;
+}
+.padding-medium {
+  padding: 1rem;
+}
+.padding-large {
+  padding: 1.5rem;
+}
+.padding-x-large {
+  padding: 2rem;
+}
+
+/*------------------ Y axis ----------------------*/
+.vertical-padding-x-small {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+.vertical-padding-small {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.vertical-padding-medium {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.vertical-padding-large {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.vertical-padding-x-large {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/*------------------ X axis ----------------------*/
+.horizontal-padding-x-small {
+  padding-left: .25rem;
+  padding-right: .25rem;
+}
+.horizontal-padding-small {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.horizontal-padding-medium {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.horizontal-padding-large {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.horizontal-padding-x-large {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* ---------------- Top padding ------------- */
+.top-padding-x-small {
+  padding-top: .25rem;
+}
+.top-padding-small {
+  padding-top: .5rem;
+}
+.top-padding-medium {
+  padding-top: 1rem;
+}
+.top-padding-large {
+  padding-top: 1.5rem;
+}
+.top-padding-x-large {
+  padding-top: 2rem;
+}
+
+/* ---------------- Right padding ------------- */
+.right-padding-x-small {
+  padding-right: .25rem;
+}
+.right-padding-small {
+  padding-right: .5rem;
+}
+.right-padding-medium {
+  padding-right: 1rem;
+}
+.right-padding-large {
+  padding-right: 1.5rem;
+}
+.right-padding-x-large {
+  padding-right: 2rem;
+}
+
+/* ---------------- Bottom padding ---------------- */
+.bottom-padding-x-small {
+  padding-bottom: .25rem;
+}
+.bottom-padding-small {
+  padding-bottom: .5rem;
+}
+.bottom-padding-medium {
+  padding-bottom: 1rem;
+}
+.bottom-padding-large {
+  padding-bottom: 1.5rem;
+}
+.bottom-padding-x-large {
+  padding-bottom: 2rem;
+}
+
+/* ---------------- Left padding ---------------- */
+.left-padding-x-small {
+  padding-left: .25rem;
+}
+.left-padding-small {
+  padding-left: .5rem;
+}
+.left-padding-medium {
+  padding-left: 1rem;
+}
+.left-padding-large {
+  padding-left: 1.5rem;
+}
+.left-padding-x-large {
+  padding-left: 2rem;
+}

@@ -1,10 +1,13 @@
 <template>
-  <div class="nav">
+  <div class="nav vertical-padding-medium horizontal-padding-x-large">
+
     <RouterLink to="/home" class="logo__url">
       <img src="/img/logo.png" alt="Make your burguer" class="logo__img">
     </RouterLink>
+
     <RouterLink to="/home">Home</RouterLink>
     <RouterLink to="/orders">Pedidos</RouterLink>
+    
   </div>  
 </template>
 
@@ -19,7 +22,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1rem 3rem;
     background: #222;
   }
   .nav .logo__url {
@@ -31,7 +33,7 @@
     height: 2.5rem;
   }
   .nav a {
-    margin: .75rem;
+    margin: .5rem;
     color: #FCBA03;
     text-decoration: none;
     transition: .3s

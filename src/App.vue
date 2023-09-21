@@ -19,21 +19,4 @@
   }
 </script>
 
-<style>
-  * {
-    font-family: Helvetica;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
-  } 
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #222;
-  }
-  .container {
-    margin: 3rem;
-    min-height: 16rem;
-  }
-</style>
+<style></style>

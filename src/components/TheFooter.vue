@@ -1,16 +1,21 @@
 <template>
-  <div class="footer flex column">
-    <div class="flex margin-small">
-      <div v-for="(data, key) in socialLinks" :key="key" class="margin-x-small social-links">
-        <a :href="data.link" :title="data.text" target="_blank">
-          <i :class="data.icon"></i>
-        </a>
+  <div class="footer">
+    <div class="flex column">
+
+      <div class="social-container">
+        <div v-for="(data, key) in socialLinks" :key="key" class="margin-x-small social-links">
+          <a :href="data.link" :title="data.text" target="_blank">
+            <i :class="data.icon"></i>
+          </a>
+        </div>
       </div>
+
+      <p class="text-small text-footer padding-x-small">
+        Developed by
+        <strong><a :href="socialLinks.github.link">Wallyson Oliveira</a></strong> 
+      </p>
+
     </div>
-    <span class="text-footer">
-      Developed by
-      <a :href="socialLinks.github.link">Wallyson Oliveira</a> 
-    </span>
   </div>
 </template>
 
@@ -39,26 +44,27 @@
 </script>
 
 <style scoped>
-  .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15vh;
-  width: 100vw;
-  background: #222222;
-  color: #FCBA03;
+  .footer { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    height: 10%;
+    width: 100%;
+    bottom: 0;
+    background: #222222;
+    color: #FCBA03;
   }
   .flex{
-  display: flex;
+    display: flex;
   }
   .column {
-  flex-direction: column;
+    flex-direction: column;
   }
-  .margin-x-small {
-  margin: .25rem
-  }
-  .margin-small {
-  margin: .5rem
+  .social-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
   .social-links {
     display: flex;
@@ -67,12 +73,9 @@
   }
   .social-links a {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: .75rem;
+    padding: .25rem;
     border-radius: 25%;
-    cursor: pointer;
-    text-decoration: none;
     color: #f9f9f9;
   }
   .social-links a:hover {
@@ -80,15 +83,11 @@
     color: #222222;
     transition: .5s;
   }
-  .text-footer {
-    font-size: 1rem;
-    padding: .25rem
-  }
   .text-footer a{
-    text-decoration: none;
     color: #FCBA03;
   }
   .text-footer a:hover{
     background-color: hsla(53, 45%, 30%, 0.29);
   }
 </style>
+sty

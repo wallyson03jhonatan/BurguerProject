@@ -1,0 +1,128 @@
+/*------------------ General margin ----------------------*/
+.margin-x-small {
+  margin: .25rem;
+}
+.margin-small {
+  margin: .5rem;
+}
+.margin-medium {
+  margin: 1rem;
+}
+.margin-large {
+  margin: 1.5rem;
+}
+.margin-x-large {
+  margin: 2rem;
+}
+
+/*------------------ Y axis ----------------------*/
+.vertical-margin-x-small {
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+.vertical-margin-small {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+.vertical-margin-medium {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.vertical-margin-large {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.vertical-margin-x-large {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/*------------------ X axis ----------------------*/
+.horizontal-margin-x-small {
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+.horizontal-margin-small {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.horizontal-margin-medium {
+  margin-left:  1rem;
+  margin-right:  1rem;
+}
+.horizontal-margin-large {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.horizontal-margin-x-large {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+/* ---------------- Top margin ------------- */
+.top-margin-x-small {
+  margin-top: .25rem;
+}
+.top-margin-small {
+  margin-top: .5rem;
+}
+.top-margin-medium {
+  margin-top: 1rem;
+}
+.top-margin-large {
+  margin-top: 1.5rem;
+}
+.top-margin-x-large {
+  margin-top: 2rem;
+}
+
+/* ---------------- Right margin ------------- */
+.right-margin-x-small {
+  margin-right: .25rem;
+}
+.right-margin-small {
+  margin-right: .5rem;
+}
+.right-margin-medium {
+  margin-right: 1rem;
+}
+.right-margin-large {
+  margin-right: 1.5rem;
+}
+.right-margin-x-large {
+  margin-right: 2rem;
+}
+
+/* ---------------- Bottom margin ---------------- */
+.bottom-margin-x-small {
+  margin-bottom: .25rem;
+}
+.bottom-margin-small {
+  margin-bottom: .5rem;
+}
+.bottom-margin-medium {
+  margin-bottom: 1rem;
+}
+.bottom-margin-large {
+  margin-bottom: 1.5rem;
+}
+.bottom-margin-x-large {
+  margin-bottom: 2rem;
+}
+
+/* ---------------- Left margin ---------------- */
+.left-margin-x-small {
+  margin-left: .25rem;
+}
+.left-margin-small {
+  margin-left: .5rem;
+}
+.left-margin-medium {
+  margin-left: 1rem;
+}
+.left-margin-large {
+  margin-left: 1.5rem;
+}
+.left-margin-x-large {
+  margin-left: 2rem;
+}

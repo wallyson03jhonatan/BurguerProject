@@ -90,49 +90,14 @@
     },
     {
       "name": "Wallyson",
-      "steak": "Rump skirt",
+      "steak": "Rump steak",
       "bread": "Roll",
       "optionals": [
-        "Bacon"
+        "Bacon",
+        "Tomato"
       ],
       "status": "Requested",
       "id": 2
-    },
-    {
-      "name": "Marcelli",
-      "steak": "Rump steak",
-      "bread": "Burger bun",
-      "optionals": [
-        "Bacon"
-      ],
-      "status": "Requested",
-      "id": 3
-    },
-    {
-      "name": "Wallyson",
-      "steak": "Rump steak",
-      "bread": "Burger bun",
-      "optionals": [],
-      "status": "Requested",
-      "id": 4
-    },
-    {
-      "name": "Wallyson",
-      "steak": "Rump steak",
-      "bread": "Burger bun",
-      "optionals": [
-        "Bacon"
-      ],
-      "status": "Requested",
-      "id": 5
-    },
-    {
-      "name": "Marcelli",
-      "steak": "Rump steak",
-      "bread": "Burger bun",
-      "optionals": [],
-      "status": "Requested",
-      "id": 6
     }
   ]
 }
