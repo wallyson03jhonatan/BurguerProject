@@ -17,36 +17,46 @@
 
 /*------------------ Y axis ----------------------*/
 .vertical-padding-x-small {
-  padding: .25rem 0;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
 }
 .vertical-padding-small {
-  padding: .5rem 0;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 .vertical-padding-medium {
-  padding: 1rem 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .vertical-padding-large {
-  padding: 1.5rem 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 .vertical-padding-x-large {
-  padding: 2rem 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 /*------------------ X axis ----------------------*/
 .horizontal-padding-x-small {
-  padding: 0 .25rem;
+  padding-left: .25rem;
+  padding-right: .25rem;
 }
 .horizontal-padding-small {
-  padding: 0 .5rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 .horizontal-padding-medium {
-  padding: 0 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .horizontal-padding-large {
-  padding: 0 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .horizontal-padding-x-large {
-  padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* ---------------- Top padding ------------- */

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="bottom-margin-small">{{ title }}</h1>
+    <h1 class="bottom-margin-large">Make your burger</h1>
     <base-form />
   </div>
 </template>
@@ -13,28 +13,7 @@
     components: {
       BaseForm, 
     },
-    data() {
-      return {
-        title: null,
-      }
-    },
-    methods: {
-      resize() {
-        this.title = window.innerWidth <= 991 ? 'Make your burger': 'Choose your ingredients';
-         
-        window.addEventListener('resize', () => {
-          return this.title = window.innerWidth <= 991 ? 'Make your burger': 'Choose your ingredients';
-        });
-      },
-    },
-    mounted() {
-      this.resize()
-    },
   }
 </script>
 
-<style scoped>
-  .bottom-margin-small {
-    margin-bottom: .5rem;
-  }
-</style>
+<style scoped></style>

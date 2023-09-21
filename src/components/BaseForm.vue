@@ -8,13 +8,13 @@
     <div>
       <form class="buguer-form" @submit.prevent="sendBurguerData()">
 
-        <div class="container-forms">
-          <label for="name">Write your name:</label>
+        <div class="container-forms bottom-margin-medium">
+          <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
           <input type="text" name="name" v-model="name" placeholder="Ex: Naruto...">
         </div>
 
-        <div class="container-forms">
-          <label for="bread">Choose your bread:</label>
+        <div class="container-forms bottom-margin-medium">
+          <label for="bread" class="bottom-margin-small padding-small">Choose your bread:</label>
             <select name="bread" v-model="sendBread">
               <option>Select your bread</option>
               <option v-for="bread in getBreads" :key="bread.id" :value="bread.type">
@@ -23,8 +23,8 @@
             </select>
         </div>
 
-        <div class="container-forms">
-          <label for="steak">Choose your steak:</label>
+        <div class="container-forms bottom-margin-medium">
+          <label for="steak" class="bottom-margin-small padding-small">Choose your steak:</label>
             <select name="steak" v-model="sendSteak">
               <option value="">Select your steak</option>
               <option v-for="steak in getSteaks" :key="steak.id" :value="steak.type">
@@ -33,16 +33,16 @@
             </select>
         </div>
 
-        <div class="container-forms container-optionals">
-          <label class="opcionais" for="optionals">Choose your optinal ingredients:</label>
-          <div class="container-checkbox" v-for="option in getOptions" :key="option.id">
+        <div class="container-forms container-optionals bottom-margin-medium">
+          <label class="opcionais bottom-margin-small padding-small" for="optionals" >Choose your optinal ingredients:</label>
+          <div class="container-checkbox bottom-margin-medium" v-for="option in getOptions" :key="option.id">
             <input class="checkbox__input" type="checkbox" name="sendOptions" v-model="sendOptions" :value="option.type">
-            <span class="checkbox__span">{{ option.type }}</span>
+            <span class="checkbox__span left-margin-small">{{ option.type }}</span>
           </div>  
         </div>
 
         <div class="container-forms">
-          <input class="btn__submit" type="submit" name="btn-submit" value="Create burguer">
+          <input class="btn__submit text-medium" type="submit" name="btn-submit" value="Create burguer">
         </div>
 
       </form>
@@ -138,11 +138,8 @@
   .container-forms {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
   }
   label {
-    margin-bottom: .5rem;
-    padding: .5rem;
     border-left: .25rem solid #FCBA03;
     font-weight: 600;
     color: #222;
@@ -162,16 +159,15 @@
     display: flex;
     align-items: flex-start;
     width: 50%;
-    margin-bottom: 1rem;
   }
   .checkbox__span,
   .checkbox__input {
     width: auto;
-  }
-  .checkbox__span{
-    margin-left: .5rem;
     font-weight: 600;
   }
+  .checkbox__input { 
+    cursor: pointer;
+  } 
   .btn__submit {
     margin: 0 auto;
     padding: .75rem;
@@ -179,7 +175,6 @@
     border: .125rem solid #222;
     color:#FCBA03;
     font-weight: 600;
-    font-size: 1rem;
     cursor: pointer;
     transition: .5s;
   }
