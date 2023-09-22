@@ -10,39 +10,65 @@
 
         <div class="container-forms bottom-margin-medium">
           <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
-          <input type="text" name="name" v-model="name" placeholder="Ex: Naruto...">
+          <input 
+            type="text" 
+            name="name"
+            v-model="name" 
+            placeholder="Ex: Naruto..."
+          >
         </div>
 
         <div class="container-forms bottom-margin-medium">
           <label for="bread" class="bottom-margin-small padding-small">Choose your bread:</label>
-            <select name="bread" v-model="sendBread">
-              <option>Select your bread</option>
-              <option v-for="bread in getBreads" :key="bread.id" :value="bread.type">
-                {{ bread.type }}
-              </option>
-            </select>
+          <select name="bread" v-model="sendBread">
+
+            <option>Select your bread</option>
+            <option v-for="bread in getBreads" :key="bread.id" :value="bread.type">
+              {{ bread.type }}
+            </option>
+
+          </select>
         </div>
 
         <div class="container-forms bottom-margin-medium">
           <label for="steak" class="bottom-margin-small padding-small">Choose your steak:</label>
             <select name="steak" v-model="sendSteak">
+
               <option value="">Select your steak</option>
               <option v-for="steak in getSteaks" :key="steak.id" :value="steak.type">
                 {{ steak.type }}
               </option>
+
             </select>
         </div>
 
         <div class="container-forms container-optionals bottom-margin-medium">
           <label class="opcionais bottom-margin-small padding-small" for="optionals" >Choose your optinal ingredients:</label>
-          <div class="container-checkbox bottom-margin-medium" v-for="option in getOptions" :key="option.id">
-            <input class="checkbox__input" type="checkbox" name="optionals" id="optionals" v-model="sendOptions" :value="option.type">
+          <div 
+            v-for="option in getOptions" 
+            :key="option.id"
+            class="container-checkbox bottom-margin-medium" 
+          >
+            <input 
+              class="checkbox__input" 
+              type="checkbox" 
+              name="optionals" 
+              id="optionals" 
+              v-model="sendOptions" 
+              :value="option.type"
+            >
             <span class="checkbox__span left-margin-small">{{ option.type }}</span>
           </div>  
         </div>
 
         <div class="container-forms">
-          <input class="btn__submit text-medium" type="submit" name="btn-submit" value="Create burguer">
+          <input 
+            class="btn__submit text-medium" 
+            type="submit" 
+            name="btn-submit" 
+            role="button" 
+            value="Create burguer"
+          >
         </div>
 
       </form>

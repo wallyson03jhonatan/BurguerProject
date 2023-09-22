@@ -1,6 +1,6 @@
 <template>
   <div class="container-message" :class="!msg ? 'close': `message-${msgType}`">
-    <span>{{ msg }}</span>
+    <p>{{ msg }}</p>
   </div>
 </template>
 
@@ -23,7 +23,7 @@
 <style scoped>
   .container-message {
     position: absolute;
-    top: 10%;
+    top: 8%;
     left: 25%;
     right: 25%;
     z-index: 2;
@@ -33,7 +33,6 @@
     margin: 1.5rem auto;
     max-width: 25rem;
     font-weight: 600;
-    /* opacity: 0.8; */
     transition: all .3s;
   }
   .message-info {

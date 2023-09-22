@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer" class="footer">
+  <div class="footer">
     <div class="flex column">
 
       <div class="social-container">
@@ -16,7 +16,7 @@
       </p>
 
     </div>
-  </footer>
+  </div>
 
 </template>
 

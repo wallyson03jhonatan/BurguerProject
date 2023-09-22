@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="bottom-margin-large">Make your burger</h1>
+    <h1 class="bottom-margin-large text-center">Make your burger</h1>
     <base-form />
   </div>
 </template>
