@@ -36,7 +36,7 @@
         <div class="container-forms container-optionals bottom-margin-medium">
           <label class="opcionais bottom-margin-small padding-small" for="optionals" >Choose your optinal ingredients:</label>
           <div class="container-checkbox bottom-margin-medium" v-for="option in getOptions" :key="option.id">
-            <input class="checkbox__input" type="checkbox" name="sendOptions" v-model="sendOptions" :value="option.type">
+            <input class="checkbox__input" type="checkbox" name="optionals" id="optionals" v-model="sendOptions" :value="option.type">
             <span class="checkbox__span left-margin-small">{{ option.type }}</span>
           </div>  
         </div>

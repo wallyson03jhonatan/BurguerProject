@@ -1,5 +1,5 @@
 <template>
-  <div class="nav vertical-padding-medium horizontal-padding-x-large">
+  <nav class="nav vertical-padding-medium horizontal-padding-x-large">
 
     <RouterLink to="/home" class="logo__url">
       <img src="/img/logo.png" alt="Make your burguer" class="logo__img">
@@ -7,8 +7,9 @@
 
     <RouterLink to="/home">Home</RouterLink>
     <RouterLink to="/orders">Pedidos</RouterLink>
-    
-  </div>  
+
+  </nav>
+
 </template>
 
 <script>

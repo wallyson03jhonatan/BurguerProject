@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <footer id="footer" class="footer">
     <div class="flex column">
 
       <div class="social-container">
@@ -16,7 +16,8 @@
       </p>
 
     </div>
-  </div>
+  </footer>
+
 </template>
 
 <script>
@@ -29,7 +30,7 @@
           text,
           icon,
         }
-      }
+      },
     },
     computed: {
       socialLinks() {
@@ -48,10 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute; 
-    height: 10%;
     width: 100%;
-    bottom: 0;
     background: #222222;
     color: #FCBA03;
   }
