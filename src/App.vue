@@ -1,8 +1,10 @@
 <template>
   <div>
+    
     <the-nav/>
     <RouterView />
     <the-footer />
+
   </div>
 </template>
 

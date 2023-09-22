@@ -89,15 +89,20 @@
       "id": 1
     },
     {
-      "name": "Wallyson",
-      "steak": "Rump steak",
+      "name": "marcelli",
+      "steak": "Veggie burger",
       "bread": "Roll",
-      "optionals": [
-        "Bacon",
-        "Tomato"
-      ],
+      "optionals": [],
       "status": "Requested",
-      "id": 2
+      "id": 4
+    },
+    {
+      "name": "Wallyson Jhonatan de Oliveira",
+      "steak": "",
+      "bread": "Select your bread",
+      "optionals": [],
+      "status": "Requested",
+      "id": 5
     }
   ]
 }
