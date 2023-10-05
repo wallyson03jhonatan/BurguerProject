@@ -28,12 +28,21 @@
     right: 25%;
     z-index: 2;
 
-    border-radius: .25rem;
+    
     padding: 1rem;
     margin: 1.5rem auto;
     max-width: 25rem;
+    border-radius: .25rem;
     font-weight: 600;
-    transition: all .3s;
+
+    transition: all .2s;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-direction: alternate;
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
   }
   .message-info {
     color: #5BC0DE;
@@ -58,6 +67,6 @@
   }
   .close {
     display: none;
-    transition: all .5s;
+    transition: all .2s;
   }
 </style>

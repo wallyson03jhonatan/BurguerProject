@@ -1,21 +1,18 @@
 <template>
   <div>
+
     <base-message 
       v-show="msg && msgType != null"
       :msg="msg" 
       :msgType="msgType" 
     />
+
     <div>
-      <form class="buguer-form" @submit.prevent="sendBurguerData()">
+      <Form class="buguer-form" @submit="onSubmit">
 
         <div class="container-forms bottom-margin-medium">
           <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
-          <input 
-            type="text" 
-            name="name"
-            v-model="name" 
-            placeholder="Ex: Naruto..."
-          >
+          <Field type="text" name="name" v-model="name" placeholder="Ex: Naruto..." :rules="validateName"/>
         </div>
 
         <div class="container-forms bottom-margin-medium">
@@ -71,18 +68,22 @@
           >
         </div>
 
-      </form>
+      </Form>
     </div>
+
   </div>
 </template>
 
 <script>
   import BaseMessage from './BaseMessage.vue';
+  import { Form, Field } from 'vee-validate';
 
   export default {
     name: 'BaseForm',
     components: {
       BaseMessage,
+      Form,
+      Field,
     },
     data() {
       return {
@@ -148,6 +149,16 @@
         ]
 
         return cleanedData;
+      },
+      onSubmit(values) {
+        console.log(values);
+      },
+      validateName(value) {
+        // if the field is empty
+        if (!value) {
+          return 'This field is required';
+        }
+        console.log('de alguma maneira bateu');
       }
     },
     created() {
