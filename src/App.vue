@@ -1,10 +1,23 @@
 <template>
   <div>
 
-    <the-nav/>
-    <RouterView />
-    <the-footer />
+    <div id="content-teste">
+      
+      <nav>
+        <the-nav/>
+      </nav>
+    
+      <section>
+        <RouterView />
+      </section>
 
+
+    </div>
+
+    <footer>
+      <the-footer />
+    </footer>
+    
   </div>
 </template>
 
@@ -20,4 +33,7 @@
       TheFooter,
     },
   }
+
 </script>
+
+
