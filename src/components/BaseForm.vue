@@ -12,7 +12,8 @@
 
         <div class="container-forms bottom-margin-medium">
           <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
-          <Field type="text" name="name" v-model="name" placeholder="Ex: Naruto..." :rules="validateName"/>
+          <Field type="text" name="name" placeholder="Ex: Naruto..." :rules="validateName" v-model="name"/>
+          <ErrorMessage name="email" />
         </div>
 
         <div class="container-forms bottom-margin-medium">
@@ -76,7 +77,7 @@
 
 <script>
   import BaseMessage from './BaseMessage.vue';
-  import { Form, Field } from 'vee-validate';
+  import { Form, Field, ErrorMessage  } from 'vee-validate';
 
   export default {
     name: 'BaseForm',
@@ -84,7 +85,9 @@
       BaseMessage,
       Form,
       Field,
+      ErrorMessage,
     },
+    mixins: [validateForm],
     data() {
       return {
         name: '',
