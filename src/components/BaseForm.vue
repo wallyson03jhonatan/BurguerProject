@@ -54,7 +54,7 @@
 </template>
 
 <script>
-  import BaseMessage from './BaseMessage.vue';
+  import BaseMessage from '@/components/BaseMessage.vue';
   import { Form, Field } from 'vee-validate';
 
   export default {
