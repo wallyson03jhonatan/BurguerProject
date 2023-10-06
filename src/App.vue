@@ -10,8 +10,7 @@
       <section>
         <RouterView />
       </section>
-
-
+      
     </div>
 
     <footer>

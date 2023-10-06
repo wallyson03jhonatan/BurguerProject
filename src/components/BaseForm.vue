@@ -12,8 +12,8 @@
 
         <div class="container-forms bottom-margin-medium">
           <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
-          <Field type="text" name="name" placeholder="Ex: Naruto..." :rules="validateName" v-model="name"/>
-          <ErrorMessage name="email" />
+          <Field type="text" name="name" placeholder="Ex: Naruto..." rules="required|min: 3|max: 80" v-model="name"/>
+          <ErrorMessage name="name" />
         </div>
 
         <div class="container-forms bottom-margin-medium">
@@ -76,13 +76,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  import BaseMessage from './BaseMessage.vue';
-  import { Form, Field, ErrorMessage  } from 'vee-validate';
-=======
   import BaseMessage from '@/components/BaseMessage.vue';
-  import { Form, Field } from 'vee-validate';
->>>>>>> 27d333ba93468048579d6d82817d2098ab18e34b
+  import { Form, Field, ErrorMessage } from 'vee-validate';
 
   export default {
     name: 'BaseForm',
@@ -92,7 +87,6 @@
       Field,
       ErrorMessage,
     },
-    mixins: [validateForm],
     data() {
       return {
         name: '',
@@ -161,13 +155,6 @@
       onSubmit(values) {
         console.log(values);
       },
-      validateName(value) {
-        // if the field is empty
-        if (!value) {
-          return 'This field is required';
-        }
-        console.log('de alguma maneira bateu');
-      }
     },
     created() {
       this.getBurguerIngredients();
