@@ -76,8 +76,13 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   import BaseMessage from './BaseMessage.vue';
   import { Form, Field, ErrorMessage  } from 'vee-validate';
+=======
+  import BaseMessage from '@/components/BaseMessage.vue';
+  import { Form, Field } from 'vee-validate';
+>>>>>>> 27d333ba93468048579d6d82817d2098ab18e34b
 
   export default {
     name: 'BaseForm',

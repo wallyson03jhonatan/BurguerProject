@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div id="content-teste">
       
       <nav>
@@ -9,6 +10,7 @@
       <section>
         <RouterView />
       </section>
+
 
     </div>
 
@@ -20,18 +22,18 @@
 </template>
 
 <script>
-  import TheNav from './components/TheNav.vue';
-  import TheFooter from './components/TheFooter.vue';
+  import TheNav from '@/components/TheNav.vue';
+  import TheFooter from '@/components/TheFooter.vue';
   import { RouterLink, RouterView } from 'vue-router';
 
+  
   export default {
     components: {
       TheNav,
       TheFooter,
     },
   }
+
 </script>
 
-<style>
 
-</style>

@@ -53,7 +53,6 @@
     color: #5CB85C;
     border: .125rem solid #5CB85C;
     background-color: #CEEACE;
-    
   }
   .message-warning {
     color: #F0AD4E;
