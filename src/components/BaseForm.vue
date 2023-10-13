@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <base-message 
       v-show="msg && msgType != null"
       :msg="msg" 
@@ -8,39 +7,71 @@
     />
 
     <div>
-      <Form class="buguer-form" @submit="onSubmit">
+      <Form class="buguer-form" @submit="sendBurguerData">
 
+        <!-- Name -->
         <div class="container-forms bottom-margin-medium">
           <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
-          <Field type="text" name="name" v-model="name" placeholder="Ex: Naruto..." :rules="validateName"/>
+          <Field 
+            type="text" 
+            name="name" 
+            placeholder="Ex: Naruto..." 
+            rules="required|min: 3|max: 80" 
+            v-model="name"
+            :validateOnMount="false"
+          />
+          <ErrorMessage name="name" />
         </div>
 
+        <!-- Bread -->
         <div class="container-forms bottom-margin-medium">
           <label for="bread" class="bottom-margin-small padding-small">Choose your bread:</label>
-          <select name="bread" v-model="sendBread">
-
-            <option>Select your bread</option>
-            <option v-for="bread in getBreads" :key="bread.id" :value="bread.type">
+          <Field 
+            name="bread" 
+            as="select" 
+            rules="required"
+            v-model="sendBread" 
+            v-slot="{ value }"
+          >
+            <option value="">Select your bread</option>
+            <option 
+              v-for="bread in getBreads" 
+              :key="bread.id" 
+              :value="bread.type" 
+              :selected="value && value.includes(bread.type)"
+            >
               {{ bread.type }}
             </option>
-
-          </select>
+          </Field>
+          <ErrorMessage name="bread" />
         </div>
 
+        <!-- Steak -->
         <div class="container-forms bottom-margin-medium">
           <label for="steak" class="bottom-margin-small padding-small">Choose your steak:</label>
-            <select name="steak" v-model="sendSteak">
-
-              <option value="">Select your steak</option>
-              <option v-for="steak in getSteaks" :key="steak.id" :value="steak.type">
-                {{ steak.type }}
-              </option>
-
-            </select>
+          <Field 
+            name="steak" 
+            as="select" 
+            rules="required"
+            v-model="sendSteak"
+            v-slot="{ value }"
+          >
+            <option value="">Select your steak</option>
+            <option 
+              v-for="steak in getSteaks" 
+              :key="steak.id" 
+              :value="steak.type"
+              :selected="value && value.includes(steak.type)"
+            >
+              {{ steak.type }}
+            </option>
+          </Field>
+          <ErrorMessage name="steak" />
         </div>
 
+        <!-- Options -->
         <div class="container-forms container-optionals bottom-margin-medium">
-          <label class="opcionais bottom-margin-small padding-small" for="optionals" >Choose your optinal ingredients:</label>
+          <label class="opcionais bottom-margin-small padding-small">Choose your optinal ingredients:</label>
           <div 
             v-for="option in getOptions" 
             :key="option.id"
@@ -59,37 +90,40 @@
         </div>
 
         <div class="container-forms">
-          <input 
+          <button 
             class="btn__submit text-medium" 
-            type="submit" 
             name="btn-submit" 
-            role="button" 
-            value="Create burguer"
+            type="submit"
+            title="Confirm order"
+            @click="resetField()"
           >
+            Create burguer
+          </button>
         </div>
 
       </Form>
     </div>
-
   </div>
 </template>
 
 <script>
   import BaseMessage from '@/components/BaseMessage.vue';
-  import { Form, Field } from 'vee-validate';
+  import { Form, Field, ErrorMessage } from 'vee-validate';
 
-  export default {
+    export default {
     name: 'BaseForm',
     components: {
       BaseMessage,
       Form,
       Field,
+      ErrorMessage,
     },
     data() {
       return {
         name: '',
         msg: null,
         msgType: null,
+        errors: [],
 
         getBreads: null,
         getSteaks: null,
@@ -110,56 +144,39 @@
         this.getOptions = response.optionals;
 
       },
-      async sendBurguerData(){
-        const data = {
-          name: this.name,
-          steak: this.sendSteak,
-          bread: this.sendBread,
+      async sendBurguerData(values){
+        const dataForm = {
+          name: values.name,
+          steak: values.sendSteak,
+          bread: values.sendBread,
           optionals: Array.from(this.sendOptions),
           status: 'Requested',
         }
 
-        const dataJson = JSON.stringify(data);
+        const dataFormJson = JSON.stringify(dataForm);
         
         const request = await fetch("//localhost:3000/burguers", {
           method: "POST",
           headers: { "content-Type": "application/json" },
-          body: dataJson,
-        })
+          body: dataFormJson,
+        });
 
         const response = await request.json();
 
         if (response.id) {
           this.msg = `Order Nº ${response.id} made with success`;
           this.msgType = 'success';
-
+          
           setTimeout(async () => {
-            this.cleanData();
+            this.name = null,
+            this.sendSteak = null,
+            this.sendBread = null,
+            this.sendOptions = null,
+            this.msg = null,
+            this.msgType = null;
           }, 3000);
         }  
       },
-      cleanData() {
-        const cleanedData = [
-          this.name = null,
-          this.sendSteak = null,
-          this.sendBread = null,
-          this.sendOptions = null,
-          this.msg = null,
-          this.msgType = null,
-        ]
-
-        return cleanedData;
-      },
-      onSubmit(values) {
-        console.log(values);
-      },
-      validateName(value) {
-        // if the field is empty
-        if (!value) {
-          return 'This field is required';
-        }
-        console.log('de alguma maneira bateu');
-      }
     },
     created() {
       this.getBurguerIngredients();
@@ -206,7 +223,6 @@
     cursor: pointer;
   } 
   .btn__submit {
-    margin: 0 auto;
     padding: .75rem;
     background-color: #222;
     border: .125rem solid #222;

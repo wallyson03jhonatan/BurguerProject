@@ -1,17 +1,14 @@
 <template>
   <div>
 
-    <div id="content-teste">
-      
+    <div id="container-main">
       <nav>
         <the-nav/>
       </nav>
     
       <section>
         <RouterView />
-      </section>
-
-
+      </section>      
     </div>
 
     <footer>
@@ -26,14 +23,12 @@
   import TheFooter from '@/components/TheFooter.vue';
   import { RouterLink, RouterView } from 'vue-router';
 
-  
   export default {
     components: {
       TheNav,
       TheFooter,
     },
   }
-
 </script>
 
 
