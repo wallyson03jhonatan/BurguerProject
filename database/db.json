@@ -80,18 +80,14 @@
   "burguers": [
     {
       "name": "Wallyson",
-      "steak": "Rump cap",
-      "bread": "Burger bun",
       "optionals": [
-        "Tomato"
+        "Bacon"
       ],
       "status": "Requested",
       "id": 1
     },
     {
-      "name": "Naruto Uzumaki",
-      "steak": "Rump skirt",
-      "bread": "Burger bun",
+      "name": "Marcelli",
       "optionals": [
         "Bacon"
       ],
@@ -99,20 +95,26 @@
       "id": 2
     },
     {
-      "name": "Marcelli",
-      "steak": "Rump skirt",
-      "bread": "Burger bun",
-      "optionals": [],
+      "name": "Wallyson",
+      "optionals": [
+        "Bacon"
+      ],
       "status": "Requested",
       "id": 3
     },
     {
-      "name": "Naruto Uzumaki",
-      "steak": "Rump cap",
-      "bread": "Burger bun",
-      "optionals": [],
+      "name": "Wallyson",
+      "optionals": [
+        "Bacon"
+      ],
       "status": "Requested",
       "id": 4
+    },
+    {
+      "name": "Marcelli",
+      "optionals": [],
+      "status": "Requested",
+      "id": 5
     }
   ]
 }

@@ -5,11 +5,11 @@ import router from './router'
 import { defineRule } from 'vee-validate';
 import * as AllRules from '@vee-validate/rules';
 
+const app = createApp(App)
+
 Object.keys(AllRules).forEach(rule => {
   defineRule(rule, AllRules[rule]);
 });
 
-const app = createApp(App)
-
-app.use(router)
-app.mount('#app')
+app.use(router);
+app.mount('#app');

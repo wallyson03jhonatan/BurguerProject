@@ -1,6 +1,25 @@
 <template>
-  <div class="container-message" :class="!msg ? 'close': `message-${msgType}`">
-    <p>{{ msg }}</p>
+  <div class="container-message">
+    <div 
+      class="message padding-small bottom-margin-small" 
+      :class="[`background-${msgType}`, `text-${msgType}`]"
+      ref="container"
+    >
+
+      <i
+        class="text-medium padding-small fas fa-check-circle"
+        :class="{
+          'fa-check-circle': msgType == 'success',
+          'fa-info-circle': msgType == 'info',
+          'fa-exclamation-circle': msgType == 'warning',
+          'fa-times-circle': msgType == 'error',
+        }"
+      >
+      </i>
+
+      <p class="padding-small text-small">{{ msg }}</p>
+
+    </div>
   </div>
 </template>
 
@@ -17,55 +36,59 @@
         },
       }
     },
+    data() {
+      return {
+        displayTime: null,
+      }
+    },
+    computed: {
+      classObject() {
+        return {
+          'alert-success': this.msgType === 'success',
+          'alert-error': this.msgType === 'error',
+          'alert-warning': this.msgType === 'warning',
+          'alert-info': this.msgType === 'info',
+        };
+      },
+    },
   }
 </script>
 
 <style scoped>
   .container-message {
-    position: absolute;
-    top: 8%;
-    left: 25%;
-    right: 25%;
+    width: calc(100% - 1rem);
+    max-width: 360px;
+    position: fixed;
+    top: 1rem;
+    right: 50%;
+    transform: translateX(50%);
     z-index: 2;
-
-    
-    padding: 1rem;
-    margin: 1.5rem auto;
-    max-width: 25rem;
+  } 
+  .message {
     border-radius: .25rem;
     font-weight: 600;
 
-    transition: all .2s;
-    animation-name: fadeIn;
-    animation-duration: 2s;
-    animation-direction: alternate;
+    display: flex;
+    align-items: center;
+    border-radius: .25rem;
+    overflow: hidden;
+    box-shadow: -7px 15px 18px -5px rgba(0,0,0,0.33);
+
+    transition-duration: .3s;
+    animation-name: messageAnimation;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
   }
-  @keyframes fadeIn {
-    0%   { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  .message-info {
-    color: #5BC0DE;
-    border: .125rem solid #5BC0DE;
-    background-color: #CDECF5;
-  }
-  .message-success {
-    color: #5CB85C;
-    border: .125rem solid #5CB85C;
-    background-color: #CEEACE;
-  }
-  .message-warning {
-    color: #F0AD4E;
-    border: .125rem solid #F0AD4E;
-    background-color: #FAE6CA;
-  }
-  .message-error {
-    color: #D9534F;
-    border: .125rem solid #D9534F;
-    background-color: #F4CBCA;;
-  }
-  .close {
-    display: none;
-    transition: all .2s;
+  
+  @keyframes messageAnimation {
+    from {
+      opacity: 0;
+      margin-top: -10%;
+    }
+    to {
+      opacity: 1;
+      margin-top: 0;
+    }
   }
 </style>
