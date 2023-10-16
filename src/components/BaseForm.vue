@@ -1,10 +1,13 @@
 <template>
   <div>
+
     <base-message 
-      v-show="msg && msgType != null"
-      :msg="msg" 
-      :msgType="msgType" 
-    />
+      v-show="alert.type"
+      :msgType="alert.type" 
+      @close="alert = {}"
+    >
+      <span v-html="alert.message"></span>
+    </base-message>
 
     <div>
       <Form class="buguer-form" @submit="sendBurguerData">
@@ -17,10 +20,9 @@
             name="name" 
             placeholder="Ex: Naruto..." 
             rules="required|min: 3|max: 80" 
-            v-model="name"
-            :validateOnMount="false"
+            v-model="name"   
           />
-          <ErrorMessage name="name" />
+          <ErrorMessage name="name">Name is not valid</ErrorMessage>
         </div>
 
         <!-- Bread -->
@@ -30,7 +32,7 @@
             name="bread" 
             as="select" 
             rules="required"
-            v-model="sendBread" 
+            v-model="sendBread"
             v-slot="{ value }"
           >
             <option value="">Select your bread</option>
@@ -43,7 +45,7 @@
               {{ bread.type }}
             </option>
           </Field>
-          <ErrorMessage name="bread" />
+          <ErrorMessage name="bread">Bread is not valid</ErrorMessage>
         </div>
 
         <!-- Steak -->
@@ -66,7 +68,7 @@
               {{ steak.type }}
             </option>
           </Field>
-          <ErrorMessage name="steak" />
+          <ErrorMessage name="steak">Steak is not valid</ErrorMessage>
         </div>
 
         <!-- Options -->
@@ -82,10 +84,12 @@
               type="checkbox" 
               name="optionals" 
               id="optionals" 
-              v-model="sendOptions" 
               :value="option.type"
+              v-model="sendOptions"
             >
+            
             <span class="checkbox__span left-margin-small">{{ option.type }}</span>
+            
           </div>  
         </div>
 
@@ -95,7 +99,6 @@
             name="btn-submit" 
             type="submit"
             title="Confirm order"
-            @click="resetField()"
           >
             Create burguer
           </button>
@@ -121,65 +124,60 @@
     data() {
       return {
         name: '',
-        msg: null,
-        msgType: null,
-        errors: [],
+        alert: {},
 
         getBreads: null,
         getSteaks: null,
         getOptions: null,
 
-        sendBread: null,
-        sendSteak: null,
         sendOptions: [],
+        sendBread: null, 
+        sendSteak: null,
       }
     },
     methods: {
       async getBurguerIngredients() {
-        const request = await fetch("//localhost:3000/ingredients");
-        const response = await request.json()
-       
-        this.getBreads = response.breads;
-        this.getSteaks = response.steaks;
-        this.getOptions = response.optionals;
+        try {
+          const request = await fetch("//localhost:3000/ingredients");
+          const response = await request.json()
+        
+          this.getBreads = response.breads;
+          this.getSteaks = response.steaks;
+          this.getOptions = response.optionals;
 
+        } catch (error) {
+          throw new Error('Something was wrong!');
+        }
       },
-      async sendBurguerData(values){
+      async sendBurguerData(values,  { resetForm }){
         const dataForm = {
           name: values.name,
-          steak: values.sendSteak,
-          bread: values.sendBread,
-          optionals: Array.from(this.sendOptions),
+          steak: values.steak,
+          bread: values.bread,
+          optionals: this.sendOptions,
           status: 'Requested',
         }
 
-        const dataFormJson = JSON.stringify(dataForm);
-        
-        const request = await fetch("//localhost:3000/burguers", {
-          method: "POST",
-          headers: { "content-Type": "application/json" },
-          body: dataFormJson,
-        });
+        try {
+          const request = await fetch("//localhost:3000/burguers", {
+            method: "POST",
+            headers: {"content-Type": "application/json"},
+            body: JSON.stringify(dataForm),
+          });
+          const response = await request.json();
 
-        const response = await request.json();
+          if (response.id) {
+            this.alert = { type: 'success', message: `Order Nº ${response.id} made with success`};  
+            resetForm();
+          } 
 
-        if (response.id) {
-          this.msg = `Order Nº ${response.id} made with success`;
-          this.msgType = 'success';
-          
-          setTimeout(async () => {
-            this.name = null,
-            this.sendSteak = null,
-            this.sendBread = null,
-            this.sendOptions = null,
-            this.msg = null,
-            this.msgType = null;
-          }, 3000);
-        }  
+        } catch (error) {
+          throw new Error('Something was wrong!');
+        }
       },
     },
     created() {
-      this.getBurguerIngredients();
+      this.getBurguerIngredients(); 
     },
   }
 </script>
