@@ -5,7 +5,6 @@
       <nav>
         <the-nav/>
       </nav>
-    
       <section>
         <RouterView />
       </section>      
@@ -13,7 +12,7 @@
 
     <footer>
       <the-footer />
-    </footer>
+    </footer>  
     
   </div>
 </template>

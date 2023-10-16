@@ -17,7 +17,15 @@
       >
       </i>
 
-      <p class="padding-small text-small">{{ msg }}</p>
+      <p class="text-small padding-small">
+        <slot></slot>
+      </p>
+
+      <div class="close">
+        <button  class="close__btn" :class="[`text-${msgType}`]" @click="onAlertClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
     </div>
   </div>
@@ -27,7 +35,6 @@
   export default {
     name: 'BaseMessage',
     props: {
-      msg: String,
       msgType:{
         type: String,
         default: null,
@@ -39,17 +46,43 @@
     data() {
       return {
         displayTime: null,
-      }
+      };
     },
     computed: {
       classObject() {
         return {
           'alert-success': this.msgType === 'success',
-          'alert-error': this.msgType === 'error',
+          'alert-error':   this.msgType === 'error',
           'alert-warning': this.msgType === 'warning',
-          'alert-info': this.msgType === 'info',
+          'alert-info':    this.msgType === 'info',
         };
       },
+    },
+    methods: {
+      onAlertClose() {
+        this.clear();
+        this.$emit('close', this.$refs.container);
+      },
+      clear() {
+        if (this.displayTime) {
+          clearTimeout(this.displayTime);
+          this.displayTime = null;
+        }
+      },
+      setTimeoutClose() {
+        if (this.msgType) {
+          this.clear();
+          this.displayTime = setTimeout(() => {
+            this.onAlertClose();
+          }, 5000);
+        }
+      },
+    },
+    created() {
+      this.setTimeoutClose();
+      this.$watch('msgType', () => {
+       this.setTimeoutClose();
+      });
     },
   }
 </script>
@@ -80,7 +113,16 @@
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
   }
-  
+  .close{
+    display: flex;
+    margin: auto;
+  }
+  .close__btn {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+  }
   @keyframes messageAnimation {
     from {
       opacity: 0;
