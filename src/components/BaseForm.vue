@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <base-message 
       v-show="alert.type"
       :msgType="alert.type" 
@@ -8,9 +7,9 @@
     >
       <span v-html="alert.message"></span>
     </base-message>
-
+    
     <div>
-      <Form class="buguer-form" @submit="sendBurguerData">
+      <Form class="buguer-form" @submit="sendBurguerData" v-slot="{ errors, meta }">
 
         <!-- Name -->
         <div class="container-forms bottom-margin-medium">
@@ -20,9 +19,16 @@
             name="name" 
             placeholder="Ex: Naruto..." 
             rules="required|min: 3|max: 80" 
-            v-model="name"   
+            v-model="name" 
+            :class="[
+              errors.name ? 'border-error' : '',
+              meta.valid ? 'border-success' : '',
+            ]"
           />
-          <ErrorMessage name="name">Name is not valid</ErrorMessage>
+
+          <ErrorMessage name="name" as="div">
+            <span class="text-error text-small text-bold">Name is not valid</span> 
+          </ErrorMessage>
         </div>
 
         <!-- Bread -->
@@ -34,6 +40,10 @@
             rules="required"
             v-model="sendBread"
             v-slot="{ value }"
+            :class="[
+              errors.bread ? 'border-error' : '',
+              meta.valid ? 'border-success' : '',
+            ]"
           >
             <option value="">Select your bread</option>
             <option 
@@ -45,7 +55,10 @@
               {{ bread.type }}
             </option>
           </Field>
-          <ErrorMessage name="bread">Bread is not valid</ErrorMessage>
+
+          <ErrorMessage name="bread" as="div">
+            <span class="text-error text-small text-bold">Bread is not valid</span> 
+          </ErrorMessage>
         </div>
 
         <!-- Steak -->
@@ -57,6 +70,10 @@
             rules="required"
             v-model="sendSteak"
             v-slot="{ value }"
+            :class="[
+              errors.steak ? 'border-error' : '',
+              meta.valid ? 'border-success' : '',
+            ]"
           >
             <option value="">Select your steak</option>
             <option 
@@ -68,7 +85,10 @@
               {{ steak.type }}
             </option>
           </Field>
-          <ErrorMessage name="steak">Steak is not valid</ErrorMessage>
+
+          <ErrorMessage name="steak" as="div">
+            <span class="text-error text-small text-bold">Steak is not valid</span>
+          </ErrorMessage>
         </div>
 
         <!-- Options -->
@@ -79,17 +99,23 @@
             :key="option.id"
             class="container-checkbox bottom-margin-medium" 
           >
-            <input 
-              class="checkbox__input" 
-              type="checkbox" 
+            <Field 
               name="optionals" 
-              id="optionals" 
-              :value="option.type"
+              type="checkbox" 
+              v-slot="{ field }"
+              :value="option.type" 
               v-model="sendOptions"
             >
-            
-            <span class="checkbox__span left-margin-small">{{ option.type }}</span>
-            
+              <input 
+                class="checkbox__input" 
+                type="checkbox" 
+                name="optionals" 
+                id="optionals" 
+                v-bind="field"
+                :value="option.type"
+              >
+              <span class="checkbox__span left-margin-small">{{ option.type }}</span>
+            </Field>
           </div>  
         </div>
 
@@ -98,7 +124,7 @@
             class="btn__submit text-medium" 
             name="btn-submit" 
             type="submit"
-            title="Confirm order"
+            title="Confirm"
           >
             Create burguer
           </button>
@@ -130,15 +156,20 @@
         getSteaks: null,
         getOptions: null,
 
-        sendOptions: [],
         sendBread: null, 
         sendSteak: null,
+        sendOptions: [],
       }
     },
     methods: {
       async getBurguerIngredients() {
         try {
           const request = await fetch("//localhost:3000/ingredients");
+
+          if (!request.ok) {
+            throw new Error('Something was wrong!');
+          }
+
           const response = await request.json()
         
           this.getBreads = response.breads;
@@ -146,7 +177,7 @@
           this.getOptions = response.optionals;
 
         } catch (error) {
-          throw new Error('Something was wrong!');
+          console.log('Something was wrong!');
         }
       },
       async sendBurguerData(values,  { resetForm }){
@@ -154,7 +185,7 @@
           name: values.name,
           steak: values.steak,
           bread: values.bread,
-          optionals: this.sendOptions,
+          optionals: values.optionals,
           status: 'Requested',
         }
 
@@ -166,13 +197,19 @@
           });
           const response = await request.json();
 
-          if (response.id) {
-            this.alert = { type: 'success', message: `Order Nº ${response.id} made with success`};  
-            resetForm();
-          } 
+          if (!response.id) {
+            throw new Error('Something was wrong!');
+          }
+          
+          this.alert = { 
+            type: 'success', 
+            message: `Order Nº ${response.id} made with success`
+          };  
 
+          resetForm();
+         
         } catch (error) {
-          throw new Error('Something was wrong!');
+          console.log('Something was wrong!');
         }
       },
     },
@@ -197,8 +234,13 @@
     color: #222;
   }
   input, select {
+    border-radius: .25rem;
     padding: .5rem .75rem;
-    width: 100%;
+    width: 100%; 
+  }
+  select option {
+    background: #f9f9f9;
+    color: #222;
   }
   .container-optionals {
     flex-direction: row;
