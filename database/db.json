@@ -79,38 +79,14 @@
   ],
   "burguers": [
     {
-      "name": "Naruto Uzumaki",
-      "steak": "Rump steak",
-      "bread": "Burger bun",
+      "name": "Marcelli",
+      "steak": "Rump cap",
+      "bread": "Baguette",
       "optionals": [
-        "Bacon",
-        "Purple Onion"
+        "Bacon"
       ],
       "status": "Requested",
       "id": 1
-    },
-    {
-      "name": "Marcelli",
-      "steak": "Rump steak",
-      "bread": "Baguette",
-      "optionals": [
-        "Cheddar",
-        "Tomato",
-        "Bacon",
-        "Salami"
-      ],
-      "status": "Requested",
-      "id": 2
-    },
-    {
-      "name": "Marcelli",
-      "steak": "Rump cap",
-      "bread": "Roll",
-      "optionals": [
-        "Purple Onion"
-      ],
-      "status": "Requested",
-      "id": 3
     }
   ]
 }
