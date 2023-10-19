@@ -154,3 +154,8 @@
   border-left: 1px solid #CCCCCC;
   border-right: 1px solid #CCCCCC;
 }
+
+/* default  */
+.border-yellow {
+  border: 1px solid #FCBA03;;
+}

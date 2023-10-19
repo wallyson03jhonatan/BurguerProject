@@ -22,7 +22,7 @@
       </p>
 
       <div class="close">
-        <button  class="close__btn" :class="[`text-${msgType}`]" @click="onAlertClose">
+        <button  class="close__btn" :class="[`text-${msgType}`, `background-${msgType}`]" @click="onAlertClose">
           <i class="fas fa-times"></i>
         </button>
       </div>

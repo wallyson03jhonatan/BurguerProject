@@ -78,15 +78,6 @@
     }
   ],
   "burguers": [
-    {
-      "name": "Marcelli",
-      "steak": "Rump cap",
-      "bread": "Baguette",
-      "optionals": [
-        "Bacon"
-      ],
-      "status": "Requested",
-      "id": 1
-    }
+    
   ]
 }
