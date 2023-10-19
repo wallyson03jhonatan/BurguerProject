@@ -7,7 +7,7 @@
     >
       <span v-html="alert.message"></span>
     </base-message>
-    
+
     <div>
       <Form class="buguer-form" @submit="sendBurguerData" v-slot="{ errors, meta }">
 
@@ -180,7 +180,7 @@
           console.log('Something was wrong!');
         }
       },
-      async sendBurguerData(values,  { resetForm }){
+      async sendBurguerData(values, { resetForm }) {
         const dataForm = {
           name: values.name,
           steak: values.steak,
@@ -203,7 +203,7 @@
           
           this.alert = { 
             type: 'success', 
-            message: `Order Nº ${response.id} made with success`
+            message: `Success: Order Nº ${response.id} made with success!`
           };  
 
           resetForm();

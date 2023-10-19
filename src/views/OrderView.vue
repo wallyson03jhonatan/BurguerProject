@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="text-center">Pedidos</h1>
+    <h1 class="bottom-margin-large text-center">Order history</h1>
     <base-orders />
   </div>
 </template>
