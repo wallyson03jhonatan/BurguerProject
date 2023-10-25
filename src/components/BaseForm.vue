@@ -166,10 +166,8 @@
         try {
           const request = await fetch("//localhost:3000/ingredients");
 
-          if (!request.ok) {
-            throw new Error('Something was wrong!');
-          }
-
+          if (!request.ok) throw new Error('Something was wrong!');
+          
           const response = await request.json()
         
           this.getBreads = response.breads;
@@ -197,9 +195,7 @@
           });
           const response = await request.json();
 
-          if (!response.id) {
-            throw new Error('Something was wrong!');
-          }
+          if (!response.id) throw new Error('Something was wrong!');
           
           this.alert = { 
             type: 'success', 
