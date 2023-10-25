@@ -78,6 +78,15 @@
     }
   ],
   "burguers": [
-    
+    {
+      "name": "Naruto Uzumaki",
+      "steak": "Rump steak",
+      "bread": "Burger bun",
+      "optionals": [
+        "Bacon"
+      ],
+      "status": "Requested",
+      "id": 1
+    }
   ]
 }
