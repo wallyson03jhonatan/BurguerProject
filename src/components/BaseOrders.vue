@@ -24,12 +24,14 @@
           </span>
         </div>
 
-        <div class="card__content card__content--split text-small top-padding-small">
+        <template v-if="orders">
+          <div v-for="(order, index) in orders" :key="index">
+            <div class="card__content card__content--split text-small top-padding-small">
 
-          <template v-if="orders">
-            <div v-for="(order, index) in orders" :key="index">
-              
-              <div class="item-1">
+              data: {{ order }}
+              index: {{ index }}
+
+              <div :class="`item-${index++}`">
                 <div class="card__title">
                   <i class="fa-regular fa-user icon__color right-padding-small"></i>
                   <span>Name:</span> 
@@ -75,16 +77,12 @@
               </div>
 
             </div>
-          </template>
+          </div>  
+        </template>
 
-
-
-        </div>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
