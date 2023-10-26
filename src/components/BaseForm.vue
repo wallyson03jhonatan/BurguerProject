@@ -175,7 +175,7 @@
           this.getOptions = response.optionals;
 
         } catch (error) {
-          console.log('Something was wrong!');
+          console.error('Something was wrong!');
         }
       },
       async sendBurguerData(values, { resetForm }) {
@@ -205,7 +205,7 @@
           resetForm();
          
         } catch (error) {
-          console.log('Something was wrong!');
+          console.error('Something was wrong!');
         }
       },
     },

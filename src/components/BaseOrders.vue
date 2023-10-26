@@ -11,78 +11,79 @@
     <div class="container-bar">Search bar | Filter  by: Name - ID - Status </div>
 
     <div class="container-grid grid-template-columns">
-      <div class="card padding-medium">
-        <div class="card__header bottom-border-gray bottom-padding-x-small">
-          <span class="text-small">
-            ID: 
-            <span class="text-bold">1</span> 
-          </span>
+      <div v-for="(order, index) in orders" :key="index"> 
+        <div class="card padding-medium margin-medium">
+
           
-          <span class="text-small">
-            Status: 
-            <span class="text-bold">Requested</span> 
-          </span>
-        </div>
-
-        <template v-if="orders">
-          <div v-for="(order, index) in orders" :key="index">
-            <div class="card__content card__content--split text-small top-padding-small">
-
-              data: {{ order }}
-              index: {{ index }}
-
-              <div :class="`item-${index++}`">
-                <div class="card__title">
-                  <i class="fa-regular fa-user icon__color right-padding-small"></i>
-                  <span>Name:</span> 
-                </div> 
-                <span class="text-bold">Fulano</span>
-              </div>
-
-              <div class="item-2">
-                <div class="card__title">
-                  <i class="fa-regular fa-calendar icon__color right-padding-small"></i>
-                  <span>Date:</span> 
-                </div> 
-                <span class="text-bold">DD/MM/YYYY</span>
-              </div>
-
-              <div class="item-3">
-                <div class="card__title">
-                  <i class="fa-solid fa-bread-slice icon__color right-padding-small"></i>
-                  <span>Bread:</span> 
-                </div> 
-                <span class="text-bold">Baguete</span>
-              </div>
-
-              <div class="item-4">
-                <div class="card__title">
-                  <i class="fa-solid fa-drumstick-bite icon__color right-padding-small"></i>
-                  <span>Steak:</span> 
-                </div> 
-                <span class="text-bold">Rump Squirt</span>
-              </div>
-
-              <div class="item-5">
-                <div class="card__title">
-                  <i class="fa-solid fa-bacon icon__color right-padding-small"></i>
-                  <span>Optionals:</span> 
-                </div> 
-                <span class="text-bold">Bacon, tomato</span>
-              </div>
+          <div class="card__header bottom-border-gray bottom-padding-x-small">
+            <span class="text-small">
+              ID: 
+              <span class="text-bold">1</span> 
+            </span>
             
-              <div class="item-6 container-btn top-padding-x-small">
-                <button class="padding-small btn btn__confirm" title="Confirm Order">Confirm receipt</button>
-                <button class="padding-small btn btn__cancel" title="Cancel Order">Cancel Order</button>
-              </div>
+            <span class="text-small">
+              Status: 
+              <span class="text-bold">Requested</span> 
+            </span>
+          </div>
 
+          <div class="card__content card__content--split text-small top-padding-small">
+
+            <div class="item-1">
+              <div class="card__title">
+                <i class="fa-regular fa-user icon__color right-padding-small"></i>
+                <span>Name:</span> 
+              </div> 
+              <span class="text-bold">Fulano</span>
             </div>
-          </div>  
-        </template>
 
+            <div class="item-2">
+              <div class="card__title">
+                <i class="fa-regular fa-calendar icon__color right-padding-small"></i>
+                <span>Date:</span> 
+              </div> 
+              <span class="text-bold">DD/MM/YYYY</span>
+            </div>
+
+            <div class="item-3">
+              <div class="card__title">
+                <i class="fa-solid fa-bread-slice icon__color right-padding-small"></i>
+                <span>Bread:</span> 
+              </div> 
+              <span class="text-bold">Baguete</span>
+            </div>
+
+            <div class="item-4">
+              <div class="card__title">
+                <i class="fa-solid fa-drumstick-bite icon__color right-padding-small"></i>
+                <span>Steak:</span> 
+              </div> 
+              <span class="text-bold">Rump Squirt</span>
+            </div>
+
+            <div class="item-5">
+              <div class="card__title">
+                <i class="fa-solid fa-bacon icon__color right-padding-small"></i>
+                <span>Optionals:</span> 
+              </div> 
+              <span class="text-bold">Bacon, tomato</span>
+            </div>
+          
+            <div class="item-6 container-btn top-padding-x-small">
+              <button class="padding-small btn btn__confirm" title="Confirm Order">Confirm receipt</button>
+              <button class="padding-small btn btn__cancel" title="Cancel Order">Cancel Order</button>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </div>
+
+
   </div>
+
+
 </template>
 
 <script>
@@ -103,24 +104,32 @@
       
     },
     methods: {
-      async getOrders() {
+      async getBurguers() {
         try {
           const request = await fetch("//localhost:3000/burguers");
 
-          if (!request.ok) {
-            throw new Error('Something was wrong!');
-          }
-
-          const response = await request.json()
-          this.orders = response;
+          if (!request.ok) throw new Error('Something was wrong!');
           
+          const response = await request.json()
+          const orders = this.formatData(response);
+          this.orders = orders
+
         } catch (error) {
-          console.log('Something was wrong!');
+          console.error('Something was wrong!');
         }
       },
+      formatData(data) {
+        return data.map(item => {
+          const updatedItem = {};
+          Object.keys(item).map(key => {
+            updatedItem[key.charAt(0).toUpperCase() + key.slice(1)] = item[key];
+          });
+          return updatedItem;
+        });
+      }
     },
     created() {
-      this.getOrders();
+      this.getBurguers();
     },
   }
 </script>
