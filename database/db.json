@@ -87,6 +87,16 @@
       ],
       "status": "Requested",
       "id": 1
+    },
+    {
+      "name": "Wallyson",
+      "steak": "Veggie burger",
+      "bread": "Roll",
+      "optionals": [
+        "Bacon"
+      ],
+      "status": "Requested",
+      "id": 2
     }
   ]
 }
