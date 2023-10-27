@@ -3,31 +3,31 @@
 
     <div id="container-main">
       <nav>
-        <the-nav/>
+        <the-nav />
       </nav>
       <section>
         <RouterView />
-      </section>      
+      </section>
     </div>
 
     <footer>
       <the-footer />
-    </footer>  
-    
+    </footer>
+
   </div>
 </template>
 
 <script>
-  import TheNav from '@/components/TheNav.vue';
-  import TheFooter from '@/components/TheFooter.vue';
-  import { RouterLink, RouterView } from 'vue-router';
+import TheNav from '@/components/TheNav.vue';
+import TheFooter from '@/components/TheFooter.vue';
+import { RouterLink, RouterView } from 'vue-router';
 
-  export default {
-    components: {
-      TheNav,
-      TheFooter,
-    },
-  }
+export default {
+  components: {
+    TheNav,
+    TheFooter,
+  },
+}
 </script>
 
 

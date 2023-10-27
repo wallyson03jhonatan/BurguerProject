@@ -3,21 +3,27 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .text-decoration-none {
   text-decoration: none;
 }
+
 .text-decoration-thickness {
   text-decoration-line: line-through;
 }
+
 .text-dashed {
   text-decoration: line-through;
 }
+
 .text-bold {
   font-weight: 600;
 }
-.text-regular{
+
+.text-regular {
   font-weight: 400;
 }
+
 .text-italic {
   font-style: italic;
 }
@@ -26,12 +32,15 @@
 .text-left {
   text-align: left;
 }
+
 .text-right {
   text-align: right;
 }
+
 .text-center {
   text-align: center;
 }
+
 .text-justify {
   text-align: justify;
 }
@@ -40,9 +49,11 @@
 .text-nowrap {
   white-space: nowrap;
 }
+
 .text-word-wrap {
   word-break: break-all;
 }
+
 .text-break-word {
   word-break: break-word;
 }
@@ -51,12 +62,15 @@
 .text-lowercase {
   text-transform: lowercase;
 }
+
 .text-uppercase {
   text-transform: uppercase;
 }
+
 .text-capitalize {
   text-transform: capitalize;
 }
+
 .text-transform-inherit {
   text-transform: inherit;
 }
@@ -65,43 +79,53 @@
 .text-spacing-x-small {
   letter-spacing: .25rem;
 }
+
 .text-spacing-small {
   letter-spacing: .5rem;
 }
+
 .text-spacing-medium {
   letter-spacing: 1rem;
 }
+
 .text-spacing-large {
   letter-spacing: 1.5rem;
 }
+
 .text-spacing-x-large {
   letter-spacing: 2rem;
 }
 
 /* Text size */
 .text-x-small {
-  font-size: clamp(.75rem, 0vw, 1rem); 
+  font-size: clamp(.75rem, 0vw, 1rem);
   line-height: 1rem;
 }
+
 .text-small {
   font-size: clamp(.875rem, .25vw, 1.25rem);
   line-height: 1.125rem;
 }
+
 .text-medium {
   font-size: clamp(1rem, .5vw, 1.5rem);
   line-height: 1.25rem;
 }
+
 .text-large {
-  font-size:  clamp(1.125rem, 1vw, 1.7rem);
+  font-size: clamp(1.125rem, 1vw, 1.7rem);
   line-height: 1.375rem;
 }
+
 .text-x-large {
-  font-size:  clamp(1.25rem, 1.5vw, 2rem);
+  font-size: clamp(1.25rem, 1.5vw, 2rem);
   line-height: 1.5rem;
 }
+
 h1 {
   font-size: clamp(1rem, 1rem + 1vw, 3rem);
 }
+
 a {
   cursor: pointer;
   text-decoration: none;
