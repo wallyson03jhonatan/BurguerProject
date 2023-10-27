@@ -79,24 +79,65 @@
   ],
   "burguers": [
     {
-      "name": "Naruto Uzumaki",
+      "name": "Wallyson Jhonatan de O",
       "steak": "Rump steak",
-      "bread": "Burger bun",
+      "bread": "Baguette",
       "optionals": [
-        "Bacon"
+        "Bacon",
+        "Cucumber"
       ],
       "status": "Requested",
+      "date": "26/9/2023",
       "id": 1
     },
     {
-      "name": "Wallyson",
+      "name": "Tia Barcelli",
       "steak": "Veggie burger",
-      "bread": "Roll",
+      "bread": "Baguette",
       "optionals": [
-        "Bacon"
+        "Purple Onion",
+        "Tomato"
       ],
       "status": "Requested",
+      "date": "26/9/2023",
       "id": 2
+    },
+    {
+      "name": "aaaaaa",
+      "steak": "Rump cap",
+      "bread": "Wholemeal",
+      "optionals": [],
+      "status": "Requested",
+      "date": "26/10/2023",
+      "id": 4
+    },
+    {
+      "name": "Tia Barcelle",
+      "steak": "Veggie burger",
+      "bread": "Baguette",
+      "optionals": [
+        "Purple Onion",
+        "Tomato"
+      ],
+      "status": "Requested",
+      "date": "26/ 10/2023",
+      "id": 5
+    },
+    {
+      "name": "Uma cavala mesmo",
+      "steak": "Veggie burger",
+      "bread": "Wholemeal",
+      "optionals": [
+        "Purple Onion",
+        "Salami",
+        "Bacon",
+        "Cucumber",
+        "Tomato",
+        "Cheddar"
+      ],
+      "status": "Requested",
+      "date": "26/09/2023",
+      "id": 6
     }
   ]
 }

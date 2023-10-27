@@ -2,18 +2,23 @@
 .text-success {
   color: #0B6520;
 }
-.text-success i{
+
+.text-success i {
   color: #0B6520;
 }
+
 .background-success {
   background-color: #D9F2DF;
 }
+
 .border-success {
   border: 1px solid #0B6520;
 }
+
 .top-border-success {
   border-top: 1px solid #0B6520;
 }
+
 .left-border-success {
   border-left: 1px solid #0B6520;
 }
@@ -22,21 +27,27 @@
 .text-error {
   color: #8A0F1A;
 }
-.text-error i{
+
+.text-error i {
   color: #8A0F1A;
 }
+
 .background-error {
   background-color: #F6D5D8;
 }
+
 .border-error {
   border: 1px solid #8A0F1A !important;
 }
+
 .top-border-error {
   border-top: 1px solid #8A0F1A;
 }
+
 .left-border-error {
   border-left: 1px solid #8A0F1A;
 }
+
 .right-border-error {
   border-right: 1px solid #8A0F1A;
 }
@@ -45,18 +56,23 @@
 .text-warning {
   color: #8A6A0F;
 }
-.text-warning i{
+
+.text-warning i {
   color: #8A6A0F;
 }
+
 .background-warning {
   background-color: #FCF1D0;
 }
+
 .border-warning {
   border: 1px solid #8A6A0F;
 }
+
 .top-border-warning {
   border-top: 1px solid #8A6A0F;
 }
+
 .left-border-warning {
   border-left: 1px solid #8A6A0F;
 }
@@ -65,15 +81,19 @@
 .text-info {
   color: #0D5B73;
 }
+
 .background-info {
   background-color: #D9EDF2;
 }
+
 .border-info {
   border: 1px solid #0D5B73;
 }
+
 .top-border-info {
   border-top: 1px solid #0D5B73;
 }
+
 .left-border-info {
   border-left: 1px solid #0D5B73;
 }
@@ -82,12 +102,15 @@
 .text-dark {
   color: #0D0D0D;
 }
+
 .hover\:text-dark:hover {
   color: #0d0d0d !important;
 }
+
 .text-dark-opacity {
   color: rgba(0, 0, 0, 0.8);
 }
+
 .dark .text-dark-opacity {
   color: rgba(255, 255, 255, 0.8);
 }
@@ -95,12 +118,15 @@
 .text-gray {
   color: #666666;
 }
+
 .hover\:text-gray:hover {
   color: #666666 !important;
 }
+
 .text-light {
   color: #B2B2B2;
 }
+
 .hover\:text-light:hover {
   color: #B2B2B2 !important;
 }
@@ -109,18 +135,23 @@
 .background-white {
   background-color: #FFFFFF !important;
 }
+
 .hover\:background-white:hover {
   background-color: #FFFFFF !important;
 }
+
 .background-light {
   background-color: #F2F2F2;
 }
+
 .hover\:background-light:hover {
   background-color: #F2F2F2 !important;
 }
+
 .background-gray {
   background-color: #E6E6E6;
 }
+
 .hover\:background-gray:hover {
   background-color: #E6E6E6 !important;
 }
@@ -129,27 +160,35 @@
 .border-transparent {
   border: 1px solid transparent;
 }
+
 .border-gray {
   border: 1px solid #CCCCCC;
 }
+
 .hover\:border-gray:hover {
   border-color: #CCCCCC !important;
 }
+
 .top-border-gray {
   border-top: 1px solid #CCCCCC;
 }
+
 .top-border-dashed {
   border-top-style: dashed;
 }
+
 .bottom-border-gray {
   border-bottom: 1px solid #CCCCCC;
 }
+
 .left-border-gray {
   border-left: 1px solid #CCCCCC;
 }
+
 .right-border-gray {
   border-right: 1px solid #CCCCCC;
 }
+
 .horizontal-border-gray {
   border-left: 1px solid #CCCCCC;
   border-right: 1px solid #CCCCCC;
