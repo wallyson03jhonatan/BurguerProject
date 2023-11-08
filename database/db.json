@@ -79,64 +79,74 @@
   ],
   "burguers": [
     {
-      "name": "Wallyson Jhonatan de O",
+      "name": "Naruto Uzumaki",
+      "steak": "Rump skirt",
+      "bread": "Roll",
+      "optionals": [
+        "Bacon"
+      ],
+      "status": "Requested",
+      "date": "8/11/2023",
+      "id": 1
+    },
+    {
+      "name": "Shikamaru Nara",
+      "steak": "Veggie burger",
+      "bread": "Wholemeal",
+      "optionals": [
+        "Purple Onion",
+        "Tomato"
+      ],
+      "status": "Requested",
+      "date": "8/11/2023",
+      "id": 2
+    },
+    {
+      "name": "Ino yamanaka",
+      "steak": "Rump skirt",
+      "bread": "Roll",
+      "optionals": [
+        "Bacon",
+        "Cheddar"
+      ],
+      "status": "Requested",
+      "date": "8/11/2023",
+      "id": 3
+    },
+    {
+      "name": "Chochi Akimichi",
       "steak": "Rump steak",
+      "bread": "Burger bun",
+      "optionals": [
+        "Bacon",
+        "Purple Onion"
+      ],
+      "status": "Requested",
+      "date": "8/11/2023",
+      "id": 4
+    },
+    {
+      "name": "Sakura Haruno",
+      "steak": "Rump cap",
       "bread": "Baguette",
+      "optionals": [
+        "Salami",
+        "Tomato"
+      ],
+      "status": "Requested",
+      "date": "8/11/2023",
+      "id": 5
+    },
+    {
+      "name": "Sasuke Uchiha",
+      "steak": "Rump cap",
+      "bread": "Wholemeal",
       "optionals": [
         "Bacon",
         "Cucumber"
       ],
       "status": "Requested",
-      "date": "26/9/2023",
-      "id": 1
-    },
-    {
-      "name": "Tia Barcelli",
-      "steak": "Veggie burger",
-      "bread": "Baguette",
-      "optionals": [
-        "Purple Onion",
-        "Tomato"
-      ],
-      "status": "Requested",
-      "date": "26/9/2023",
-      "id": 2
-    },
-    {
-      "name": "aaaaaa",
-      "steak": "Rump cap",
-      "bread": "Wholemeal",
-      "optionals": [],
-      "status": "Requested",
-      "date": "26/10/2023",
-      "id": 4
-    },
-    {
-      "name": "Tia Barcelle",
-      "steak": "Veggie burger",
-      "bread": "Baguette",
-      "optionals": [
-        "Purple Onion",
-        "Tomato"
-      ],
-      "status": "Requested",
-      "date": "26/ 10/2023",
-      "id": 5
-    },
-    {
-      "name": "Uma cavala mesmo",
-      "steak": "Veggie burger",
-      "bread": "Wholemeal",
-      "optionals": [
-        "Purple Onion",
-        "Salami",
-        "Bacon",
-        "Cucumber",
-        "Tomato",
-        "Cheddar"
-      ],
-      "status": "Requested",
-      "date": "26/09/2023",
+      "date": "8/11/2023",
       "id": 6
     }
   ]

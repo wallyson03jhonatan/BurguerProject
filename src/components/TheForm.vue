@@ -64,8 +64,7 @@
           <label class="opcionais bottom-margin-small padding-small">Choose your optinal ingredients:</label>
           <div v-for="option in getOptions" :key="option.id" class="container-checkbox bottom-margin-medium">
             <Field name="optionals" type="checkbox" v-slot="{ field }" :value="option.type" v-model="sendOptions">
-              <input class="checkbox__input" type="checkbox" name="optionals" id="optionals" v-bind="field"
-                :value="option.type">
+              <input class="checkbox__input" type="checkbox" name="optionals" id="optionals" v-bind="field" :value="option.type">
               <span class="checkbox__span left-margin-small">{{ option.type }}</span>
             </Field>
           </div>
@@ -87,7 +86,7 @@ import BaseMessage from '@/components/BaseMessage.vue';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 export default {
-  name: 'BaseForm',
+  name: 'TheForm',
   components: {
     BaseMessage,
     Form,
@@ -131,6 +130,13 @@ export default {
       const currentDay = currentDate.getDate();
       const currentMonth = currentDate.getMonth() + 1;
       const currentYear = currentDate.getFullYear();
+
+      if (values.optionals && values.optionals.length > 2) {
+        return this.alert = { 
+          type: 'error', 
+          message: `Please, it's possible chosse only two options`
+        };
+      }
 
       const dataForm = {
         name: values.name,

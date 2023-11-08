@@ -1,61 +1,62 @@
 <template>
-    <div v-for="(order, index) in orders" :key="index">
-      <div class="card padding-medium margin-medium">
+  <div>
+    <div class="container-grid grid-template-columns" v-if="orders">  
+      <div v-for="(order, index) in orders" :key="index" class="card padding-medium margin-medium">
 
-        <div class="card__header bottom-border-gray bottom-padding-x-small">
-          <span class="text-small">
-            ID:
-            <span class="text-bold">{{ order.Id }}</span>
+        <div class="card__header bottom-border-gray bottom-padding-x-small text-small">
+          <span>
+            ID: 
+            <strong>{{ order.id }}</strong>
           </span>
 
-          <span class="text-small">
+          <span>
             Status:
-            <span class="text-bold">{{ order.Status }}</span>
+            <strong>{{ order.status }}</strong>
           </span>
         </div>
 
         <div class="card__content card__content--split text-small top-padding-small">
 
-          <div class="item-1">
+          <div class="item item-1">
             <div class="card__title">
               <i class="fa-regular fa-user icon__color right-padding-small"></i>
               <span>Name:</span>
             </div>
-            <span class="text-bold">{{ order.Name }}</span>
+            <span class="text-bold">{{ order.name }}</span>
           </div>
 
-          <div class="item-2">
+          <div class="item item-2">
             <div class="card__title">
               <i class="fa-regular fa-calendar icon__color right-padding-small"></i>
               <span>Date:</span>
             </div>
-            <span class="text-bold">{{ order.Date }}</span>
+            <span class="text-bold">{{ order.date }}</span>
           </div>
 
-          <div class="item-3">
+          <div class="item item-3">
             <div class="card__title">
               <i class="fa-solid fa-bread-slice icon__color right-padding-small"></i>
               <span>Bread:</span>
             </div>
-            <span class="text-bold">{{ order.Bread }}</span>
+            <span class="text-bold">{{ order.bread }}</span>
           </div>
 
-          <div class="item-4">
+          <div class="item item-4">
             <div class="card__title">
               <i class="fa-solid fa-drumstick-bite icon__color right-padding-small"></i>
               <span>Steak:</span>
             </div>
-            <span class="text-bold">{{ order.Steak }}</span>
+            <span class="text-bold">{{ order.steak }}</span>
           </div>
 
-          <div class="item-5">
+          <div class="item item-5">
             <div class="card__title">
               <i class="fa-solid fa-bacon icon__color right-padding-small"></i>
               <span>Optionals:</span>
             </div>
 
-            <template v-if="order.Optionals.length != []">
-              <span v-for="option, idx in order.Optionals" :key="idx" class="text-bold options">
+            <template v-if="order.optionals.length != []">
+              <span v-for="option, idx in order.optionals" :key="idx" class="text-bold options">
                 • {{ option }}
               </span>
             </template>
@@ -64,15 +65,18 @@
             </template>
           </div>
 
-          <div class="item-6 container-btn top-padding-x-small">
+          <div class="item item-6 container-btn top-padding-x-small">
             <button class="padding-small btn btn__confirm" title="Confirm Order">Confirm receipt</button>
             <button class="padding-small btn btn__cancel" title="Cancel Order">Cancel Order</button>
           </div>
-
         </div>
 
       </div>
+    </div>  
+    <div v-else>
+      <!-- Implementar tela sem nada -->
     </div>
+  </div>
 </template>
 
 <script>
@@ -87,26 +91,17 @@ export default {
     async getBurguers() {
       try {
         const request = await fetch("//localhost:3000/burguers");
-
+        
         if (!request.ok) throw new Error('Something was wrong!');
 
         const response = await request.json()
-        const orders = this.formatData(response);
-        this.orders = orders
+        
+        this.orders = response;
 
       } catch (error) {
         console.error('Something was wrong!');
       }
     },
-    formatData(data) {
-      return data.map(item => {
-        const updatedItem = {};
-        Object.keys(item).map(key => {
-          updatedItem[key.charAt(0).toUpperCase() + key.slice(1)] = item[key];
-        });
-        return updatedItem;
-      });
-    }
   },
   created() {
     this.getBurguers();
@@ -115,7 +110,19 @@ export default {
 </script>
 
 <style scoped>
+.container-grid {
+  display: grid;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.grid-template-columns {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .card {
+  max-width: 22.5rem;
   border-radius: .5rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -135,11 +142,13 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas: "item-1 item-2"
-    "item-3 item-4"
-    "item-5 item-5"
-    "item-6 item-6";
+                       "item-3 item-4"
+                       "item-5 item-5"
+                       "item-6 item-6";
 }
-
+.item {
+  max-height: 3.45rem;
+}
 .item-1 {
   grid-area: item-1;
 }
@@ -162,6 +171,11 @@ export default {
 
 .item-6 {
   grid-area: item-6;
+}
+
+.options {
+  display: flex;
+  flex-flow: column wrap;
 }
 
 .card__title {
@@ -212,10 +226,5 @@ export default {
   -webkit-filter: brightness(1);
   filter: brightness(1);
   background: #f5c6cb;
-}
-
-.options {
-  display: flex;
-  flex-flow: column wrap;
 }
 </style>
