@@ -1,19 +1,16 @@
 <template>
   <div>
+    <nav>
+      <the-nav />
+    </nav>
 
-    <div id="container-main">
-      <nav>
-        <the-nav />
-      </nav>
-      <section>
-        <RouterView />
-      </section>
-    </div>
+    <section class="container">
+      <RouterView />
+    </section>
 
     <footer>
       <the-footer />
     </footer>
-
   </div>
 </template>
 

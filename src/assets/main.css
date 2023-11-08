@@ -6,13 +6,6 @@
   overflow-x: hidden;
 }
 
-#container-main {
-  height: 100vh;
-  overflow-y: hidden;
-}
-
 .container {
   margin: 2rem;
-  min-height: 16rem;
-  height: 100%;
 }

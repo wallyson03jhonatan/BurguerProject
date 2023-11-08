@@ -8,7 +8,7 @@
       <base-search />
     </div>
 
-    <div class="container-grid grid-template-columns">
+    <div>
       <base-order />
     </div>
   </div>
@@ -20,7 +20,7 @@ import BaseSearch from '@/components/BaseSearch.vue';
 import BaseOrder from '@/components/BaseOrder.vue'
 
 export default {
-  name: 'BaseOrders',
+  name: 'TheOrders',
   components: {
     BaseMessage,
     BaseSearch,
@@ -42,14 +42,5 @@ export default {
   padding: 16px;
 }
 
-.container-grid {
-  display: grid;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 1rem;
-}
 
-.grid-template-columns {
-  grid-template-columns: repeat(3, 1fr);
-}
 </style>
