@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <the-nav />
+      <base-nav />
     </nav>
 
     <section class="container">
@@ -9,20 +9,20 @@
     </section>
 
     <footer>
-      <the-footer />
+      <base-footer />
     </footer>
   </div>
 </template>
 
 <script>
-import TheNav from '@/components/TheNav.vue';
-import TheFooter from '@/components/TheFooter.vue';
+import BaseNav from '@/common/BaseNav.vue';
+import BaseFooter from '@/common/BaseFooter.vue';
 import { RouterLink, RouterView } from 'vue-router';
 
 export default {
   components: {
-    TheNav,
-    TheFooter,
+    BaseNav,
+    BaseFooter,
   },
 }
 </script>

@@ -1,5 +1,15 @@
 <template>
   <div>
+
+    <base-message v-show="alert.type" :msgType="alert.type" @close="alert = {}">
+      <span v-html="alert.message"></span>
+    </base-message>
+
+    <div class="container-bar">
+      <base-search />
+    </div>
+
+
     <div class="container-grid grid-template-columns" v-if="orders">  
       <div v-for="(order, index) in orders" :key="index" class="card padding-medium margin-medium">
 
@@ -66,7 +76,7 @@
           </div>
 
           <div class="item item-6 container-btn top-padding-x-small">
-            <button class="padding-small btn btn__confirm" title="Confirm Order">Confirm receipt</button>
+            <button class="padding-small btn btn__confirm" title="Confirm Order" @click.prevent="handleConfirm(order.id)">Confirm receipt</button>
             <button class="padding-small btn btn__cancel" title="Cancel Order">Cancel Order</button>
           </div>
         </div>
@@ -76,15 +86,25 @@
     <div v-else>
       <!-- Implementar tela sem nada -->
     </div>
+
+
   </div>
 </template>
 
 <script>
+import BaseMessage from '@/common/BaseMessage.vue';
+import BaseSearch from '@/common/BaseSearch.vue';
+
 export default {
   name: 'BaseOrder',
+  components: {
+    BaseMessage,
+    BaseSearch,
+  },
   data() {
     return {
       orders: null,
+      alert: {},
     }
   },
   methods: {
@@ -102,6 +122,9 @@ export default {
         console.error('Something was wrong!');
       }
     },
+    handleConfirm(orderId) {
+      console.log(orderId);
+    },
   },
   created() {
     this.getBurguers();
@@ -110,6 +133,13 @@ export default {
 </script>
 
 <style scoped>
+.container-bar {
+  max-width: 25rem;
+  margin: 0 auto;
+  border: 1px solid orange;
+  padding: 16px;
+}
+
 .container-grid {
   display: grid;
   max-width: 75rem;
@@ -146,9 +176,11 @@ export default {
                        "item-5 item-5"
                        "item-6 item-6";
 }
+
 .item {
-  max-height: 3.45rem;
+  height: 3.45rem;
 }
+
 .item-1 {
   grid-area: item-1;
 }
