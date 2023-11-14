@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import BaseNav from '@/components/BaseNav.vue';
-import BaseFooter from '@/components/BaseFooter.vue';
+import BaseNav from '@/common/BaseNav.vue';
+import BaseFooter from '@/common/BaseFooter.vue';
 import { RouterLink, RouterView } from 'vue-router';
 
 export default {
