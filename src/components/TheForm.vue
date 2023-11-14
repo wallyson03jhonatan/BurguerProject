@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import BaseMessage from '@/components/BaseMessage.vue';
+import BaseMessage from '@/common/BaseMessage.vue';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 export default {

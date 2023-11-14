@@ -1,23 +1,23 @@
 <template>
   <div class="container-order">
     <h1 class="bottom-margin-medium text-center">Order history</h1>
-    <the-orders />
+    <the-order />
   </div>
 </template>
 
 <script>
-import TheOrders from "@/components/TheOrders.vue";
+import TheOrder from "@/components/TheOrder.vue";
 
 export default {
   name: 'OrderView',
   components: {
-    TheOrders,
+    TheOrder,
   },
 }
 </script>
 
 <style scoped>
-.container-order {
+/* .container-order {
   height: 100vh;
-}
+} */
 </style>
