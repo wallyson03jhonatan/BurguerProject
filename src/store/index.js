@@ -1,10 +1,23 @@
 import { createStore } from 'vuex';
 
 export default createStore({
+   
+    // bind data
     state:{
-        user: { name: 'John Doe', email: 'fake@email.com', username: 'jd123'},
+        burguers: [],
     },
+
+    // methods
+    actions:{},
+
+    // computed
     getters:{},
-    mutations: {},
-    actions:{}
+
+    // callback of commit e track
+    mutations: {
+        setBurguers(state, burguers) {
+            state.burguers = burguers; 
+        }
+    },
+    
 })

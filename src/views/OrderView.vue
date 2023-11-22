@@ -16,8 +16,4 @@ export default {
 }
 </script>
 
-<style scoped>
-/* .container-order {
-  height: 100vh;
-} */
-</style>
+<style scoped></style>
