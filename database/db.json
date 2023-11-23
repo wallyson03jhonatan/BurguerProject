@@ -75,9 +75,119 @@
     {
       "id": 3,
       "type": "Completed"
+    },
+    {
+      "id": 4,
+      "type": "Canceled"
     }
   ],
   "burguers": [
-  
+    {
+      "name": "Naruto Uzumaki",
+      "steak": "Rump steak",
+      "bread": "Baguette",
+      "optionals": [
+        "Bacon",
+        "Cucumber"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 1
+    },
+    {
+      "name": "Marcelli",
+      "steak": "Rump cap",
+      "bread": "Baguette",
+      "optionals": [
+        "Bacon"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 2
+    },
+    {
+      "name": "Naruto Uzumaki",
+      "steak": "Rump skirt",
+      "bread": "Roll",
+      "optionals": [
+        "Tomato",
+        "Cheddar"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 3
+    },
+    {
+      "name": "Wallyson Jhonatan de Oliveira",
+      "steak": "Veggie burger",
+      "bread": "Wholemeal",
+      "optionals": [
+        "Purple Onion",
+        "Cheddar"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 4
+    },
+    {
+      "name": "Marcelli",
+      "steak": "Rump cap",
+      "bread": "Burger bun",
+      "optionals": [
+        "Salami",
+        "Tomato"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 5
+    },
+    {
+      "name": "a*bracadabra",
+      "steak": "Veggie burger",
+      "bread": "Wholemeal",
+      "optionals": [
+        "Salami",
+        "Tomato"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 6
+    },
+    {
+      "name": "Naruto Uzumaki",
+      "steak": "Rump skirt",
+      "bread": "Burger bun",
+      "optionals": [
+        "Bacon",
+        "Tomato"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 7
+    },
+    {
+      "name": "Naruto Uzumaki",
+      "steak": "Rump cap",
+      "bread": "Burger bun",
+      "optionals": [
+        "Cheddar",
+        "Cucumber"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 8
+    },
+    {
+      "name": "Wallyson",
+      "steak": "Rump steak",
+      "bread": "Wholemeal",
+      "optionals": [
+        "Bacon",
+        "Cucumber"
+      ],
+      "status": "Requested",
+      "date": "23/11/2023",
+      "id": 9
+    }
   ]
 }

@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import store from '@/store/index.js'
 import BaseMessage from '@/common/BaseMessage.vue';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
@@ -108,28 +109,7 @@ export default {
     }
   },
   methods: {
-    async getBurguerIngredients() {
-      try {
-        const request = await fetch("//localhost:3000/ingredients");
-
-        if (!request.ok) throw new Error('Something was wrong!');
-
-        const response = await request.json()
-
-        this.getBreads = response.breads;
-        this.getSteaks = response.steaks;
-        this.getOptions = response.optionals;
-
-      } catch (error) {
-        console.error('Something was wrong!');
-      }
-    },
     async sendBurguerData(values, { resetForm }) {
-
-      const currentDate = new Date;
-      const currentDay = currentDate.getDate();
-      const currentMonth = currentDate.getMonth() + 1;
-      const currentYear = currentDate.getFullYear();
 
       if (values.optionals && values.optionals.length > 2) {
         return this.alert = { 
@@ -144,33 +124,33 @@ export default {
         bread: values.bread,
         optionals: values.optionals,
         status: 'Requested',
-        date: `${currentDay}/${currentMonth > 9 ? currentMonth : '0' + currentMonth}/${currentYear}`,
+        date: this.formatedDate(),
       }
 
-      try {
-        const request = await fetch("//localhost:3000/burguers", {
-          method: "POST",
-          headers: { "content-Type": "application/json" },
-          body: JSON.stringify(dataForm),
-        });
-        const response = await request.json();
-
-        if (!response.id) throw new Error('Something was wrong!');
-
-        this.alert = {
-          type: 'success',
-          message: `Success: Order Nº ${response.id} made with success!`
-        };
-
-        resetForm();
-
-      } catch (error) {
-        console.error('Something was wrong!');
-      }
+      store.dispatch('sendBurguers', dataForm).then(() => {
+          this.alert = {
+            type: 'success',
+            message: `Success: Order registred with success!`
+          };
+          
+          resetForm();
+      });
     },
+    formatedDate() {
+      const currentDate = new Date;
+      const currentDay = currentDate.getDate();
+      const currentMonth = currentDate.getMonth() + 1;
+      const currentYear = currentDate.getFullYear();
+
+      return `${currentDay}/${currentMonth > 9 ? currentMonth : '0' + currentMonth}/${currentYear}`;
+    }
   },
   created() {
-    this.getBurguerIngredients();
+    store.dispatch('getIngredients').then(() => {
+      this.getBreads = store.state.ingredients.breads;
+      this.getSteaks = store.state.ingredients.steaks;
+      this.getOptions = store.state.ingredients.optionals;
+    });
   },
 }
 </script>

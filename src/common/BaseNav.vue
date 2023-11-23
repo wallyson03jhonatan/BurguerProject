@@ -2,11 +2,11 @@
   <div class="nav vertical-padding-medium horizontal-padding-x-large">
 
     <RouterLink to="/home" class="logo__url">
-      <img src="/img/logo.png" alt="Make your burguer" class="logo__img" title="Homepage">
+      <img src="@/assets/img/logo.png" alt="Make your burguer" class="logo__img" title="Home">
     </RouterLink>
 
-    <RouterLink to="/home">Home</RouterLink>
-    <RouterLink to="/orders">Pedidos</RouterLink>
+    <RouterLink to="/home" title="Home">Home</RouterLink>
+    <RouterLink to="/orders" title="Orders">Orders</RouterLink>
 
   </div>
 </template>

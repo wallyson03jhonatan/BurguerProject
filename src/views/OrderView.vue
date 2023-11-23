@@ -1,6 +1,6 @@
 <template>
-  <div class="container-order">
-    <h1 class="bottom-margin-medium text-center">Order history</h1>
+  <div>
+    <h1 class="text-center">Order history</h1>
     <the-order />
   </div>
 </template>
