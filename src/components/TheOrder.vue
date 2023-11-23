@@ -1,17 +1,17 @@
 <template>
   <div>
 
-    <div v-if="orders && orders.length">
+    <div v-if="orders && orders.length" :class="orders.length <= 6 ? 'container-order' : ''">
       <base-message v-show="alert.type" :msgType="alert.type" @close="alert = {}">
         <span v-html="alert.message"></span>
       </base-message>
 
       <div class="container-bar">
-        <base-search />
+        <base-search @callback="searchValue"/>
       </div>
 
       <div class="container-grid grid-template-columns">  
-        <div v-for="(order, index) in orders" :key="index" class="card padding-medium margin-medium">
+        <div v-for="(order, index) in filteredOrders" :key="index" class="card padding-medium margin-medium">
 
           <div class="card__header bottom-border-gray bottom-padding-x-small text-small">
             <span>
@@ -77,7 +77,7 @@
 
             <div class="item item-6 container-btn top-padding-x-small">
               <button class="padding-small btn btn__confirm" title="Confirm Order" @click.prevent="handleConfirm(order.id)">Confirm receipt</button>
-              <button class="padding-small btn btn__cancel" title="Cancel Order">Cancel Order</button>
+              <button class="padding-small btn btn__cancel" title="Cancel Order" @click.prevent="handleDelete(order.id)">Cancel Order</button>
             </div>
           </div>
 
@@ -85,20 +85,19 @@
       </div>  
     </div>
 
-    <div v-else>
-      <div class="container-notOrder">
-        <div class="notOrder">
-          <img src="/img/notOrder.png" alt="Not found order" class="notOrder__img">
-          <span class="teste">
-            No orders found.
-            <RouterLink 
-              to="/home" 
-              class="notOrder__link text-dark text-decoration-none text-bold" 
-              title="Make your burguer"
-            > Make your burguer here!
-            </RouterLink>
-          </span>
-        </div>
+    <div v-else class="container-notOrder">
+      <div class="notOrder">
+        <img src="@/assets/img/notOrder.png" alt="Not found order" class="notOrder__img">
+        <span class="teste">
+          No orders found.
+          <RouterLink 
+            to="/home" 
+            class="notOrder__link text-dark text-decoration-none text-bold" 
+            title="Make your burguer"
+          > 
+            Make your burguer here!
+          </RouterLink>
+        </span>
       </div>
     </div>
 
@@ -106,6 +105,7 @@
 </template>
 
 <script>
+import store from '@/store/index.js'
 import BaseMessage from '@/common/BaseMessage.vue';
 import BaseSearch from '@/common/BaseSearch.vue';
 
@@ -117,40 +117,61 @@ export default {
   },
   data() {
     return {
+      search: null,
       orders: null,
       alert: {},
     }
   },
+  computed: {
+    filteredOrders() {
+      if (!this.search || this.search == null) return this.orders;
+        
+      return this.orders.filter( order => {
+        return order.name.match(this.search) || order.id.toString().match(this.search);
+      });
+    }
+  },
   methods: {
-    async getBurguers() {
-      try {
-        const request = await fetch("//localhost:3000/burguers");
-        
-        if (!request.ok) throw new Error('Something was wrong!');
-
-        const response = await request.json()
-        
-        this.orders = response;
-
-      } catch (error) {
-        console.error('Something was wrong!');
-      }
+    searchValue(info) {
+      this.search = info;
     },
-    handleConfirm(orderId) {
-      console.log(orderId);
+    handleConfirm(id) {
+      const orderFiltred = this.orders.filter( order => {
+        return order.id == id;
+      });
+
+      orderFiltred.map( item => {
+        item.status = 'Completed';
+      });
+
+    },
+    handleDelete(id) {
+      const orderFiltred = this.orders.filter( order => {
+        return order.id == id;
+      });
+
+      orderFiltred.map( item => {
+        item.status = 'Canceled';
+      });
     },
   },
   created() {
-    this.getBurguers();
+    store.dispatch('getBurguers').then(() => {
+      this.orders = store.state.burguers;
+    });
   },
 }
 </script>
 
 <style scoped>
+
+.container-order {
+  height: 100dvh;
+}
+
 .container-bar {
   max-width: 25rem;
   margin: 0 auto;
-  border: 1px solid orange;
   padding: 1rem;
 }
 
@@ -296,10 +317,22 @@ export default {
 .notOrder__link:hover {
   background-color: hsla(53, 45%, 30%, 0.29);
 }
+@media screen and (max-width: 767px) {
+  .container-bar {
+    max-width: 25rem;
+    margin: 0 1rem;
+    padding: 1rem;
+  }
+
+  .grid-template-columns {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 @media screen and (max-width: 425px) {
   .notOrder__img {
     width: 100%;
   } 
 }
+
 </style>
