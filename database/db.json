@@ -149,7 +149,7 @@
         "Salami",
         "Tomato"
       ],
-      "status": "Requested",
+      "status": "Completed",
       "date": "23/11/2023",
       "id": 6
     },
@@ -185,7 +185,7 @@
         "Bacon",
         "Cucumber"
       ],
-      "status": "Requested",
+      "status": "Canceled",
       "date": "23/11/2023",
       "id": 9
     }
