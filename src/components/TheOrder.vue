@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div v-if="orders && orders.length" :class="orders.length <= 6 ? 'container-order' : ''">
+    <div v-if="orders && orders.length" class="container-order">
       <base-message v-show="alert.type" :msgType="alert.type" @close="alert = {}">
         <span v-html="alert.message"></span>
       </base-message>
@@ -32,7 +32,7 @@
                 <i class="fa-regular fa-user icon__color right-padding-small"></i>
                 <span>Name:</span>
               </div>
-              <span class="text-bold">{{ order.name }}</span>
+              <span class="text-bold" v-text="limitText(order.name, 16)"></span>
             </div>
 
             <div class="item item-2">
@@ -75,9 +75,21 @@
               </template>
             </div>
 
-            <div class="item item-6 container-btn top-padding-x-small">
-              <button class="padding-small btn btn__confirm" title="Confirm Order" @click.prevent="handleConfirm(order.id)">Confirm receipt</button>
-              <button class="padding-small btn btn__cancel" title="Cancel Order" @click.prevent="handleDelete(order.id)">Cancel Order</button>
+            <div class="item item-6 container-btn top-padding-x-small" v-if="order.status == 'Requested'">
+              <button 
+                class="padding-small btn btn__confirm" 
+                title="Confirm Order" 
+                @click.prevent="handleConfirm(order.id)"
+              >
+                Confirm receipt
+              </button>
+              <button 
+                class="padding-small btn btn__cancel" 
+                title="Cancel Order" 
+                @click.prevent="handleDelete(order.id)"
+              >
+                Cancel Order
+              </button>
             </div>
           </div>
 
@@ -129,30 +141,30 @@ export default {
       return this.orders.filter( order => {
         return order.name.match(this.search) || order.id.toString().match(this.search);
       });
-    }
+    },
   },
   methods: {
     searchValue(info) {
       this.search = info;
     },
+    limitText(string, maxLength) {
+      if (string.length > maxLength) return string.substring(0, maxLength) + '...';
+      
+      return string;
+    },
     handleConfirm(id) {
-      const orderFiltred = this.orders.filter( order => {
-        return order.id == id;
-      });
+      const orderFiltred = this.orders.find(order => order.id == id);
 
-      orderFiltred.map( item => {
-        item.status = 'Completed';
-      });
-
+      if (orderFiltred)  orderFiltred.status = 'Completed';
+        
+      store.dispatch('hadleStatus', orderFiltred);
     },
     handleDelete(id) {
-      const orderFiltred = this.orders.filter( order => {
-        return order.id == id;
-      });
+      const orderFiltred = this.orders.find(order => order.id == id);
 
-      orderFiltred.map( item => {
-        item.status = 'Canceled';
-      });
+      if (orderFiltred)  orderFiltred.status = 'Canceled';
+        
+      store.dispatch('hadleStatus', orderFiltred);
     },
   },
   created() {
@@ -166,7 +178,7 @@ export default {
 <style scoped>
 
 .container-order {
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 .container-bar {

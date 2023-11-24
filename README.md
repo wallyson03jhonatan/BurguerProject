@@ -1,35 +1,40 @@
-# burguer-project
+# 🍔 Burguer-project
 
-This template should help get you started developing with Vue 3 in Vite.
+This project covers technologies present in frontend development with the VueJs ecosystems!
 
-## Recommended IDE Setup
+## 🧐 Summary
+• It's a simple project to review the knowledge. I'm a dev with experience in the Vue ecosystem but I still don't have any personal projects with this stack.  
+• The main focus was to show basic knowledge through an order creator with crud methods such as: create, ready and update.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🛠️ Tech stack
+• This project was created with Vite.  
+• Vuejs  
+• Vue router  
+• Vuex  
+• VeeValidate  
+• Json server  
+• Git  
+• Also was used CSS and HTML concepts.  
 
-## Customize configuration
+## 🔥 Main concepts
+• Form creation and validation  
+• Error handling  
+• Fetch database  
+• Responsive layout  
+• Data binding  
+• State management  
+• Route management  
+• Vue lifecycle hooks  
+• File architecture    
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## ⚙️ Recommended IDE Setup
 
-## Project Setup
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## 📝 Project Setup and Run
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+npm run backend
 ```
