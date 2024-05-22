@@ -79,14 +79,14 @@
               <button 
                 class="padding-small btn btn__confirm" 
                 title="Confirm Order" 
-                @click.prevent="handleConfirm(order.id)"
+                @click.prevent="handleStatus(order.id, 'Completed')"
               >
                 Confirm receipt
               </button>
               <button 
                 class="padding-small btn btn__cancel" 
                 title="Cancel Order" 
-                @click.prevent="handleDelete(order.id)"
+                @click.prevent="handleStatus(order.id, 'Canceled')"
               >
                 Cancel Order
               </button>
@@ -152,20 +152,18 @@ export default {
       
       return string;
     },
-    handleConfirm(id) {
+    handleStatus(id, status) {
       const orderFiltred = this.orders.find(order => order.id == id);
-
-      if (orderFiltred)  orderFiltred.status = 'Completed';
-        
-      store.dispatch('hadleStatus', orderFiltred);
-    },
-    handleDelete(id) {
-      const orderFiltred = this.orders.find(order => order.id == id);
-
-      if (orderFiltred)  orderFiltred.status = 'Canceled';
-        
-      store.dispatch('hadleStatus', orderFiltred);
-    },
+      
+      if (orderFiltred) orderFiltred.status = status;
+      
+      store.dispatch('hadleStatus', orderFiltred).then(() => {
+        this.alert = {
+          type: 'success',
+          message: `Order status changed to ${status.toLowerCase()}!`
+        };
+      });
+    }  
   },
   created() {
     store.dispatch('getBurguers').then(() => {
@@ -191,7 +189,6 @@ export default {
   display: grid;
   max-width: 75rem;
   margin: 0 auto;
-  padding: 1rem;
 }
 
 .grid-template-columns {

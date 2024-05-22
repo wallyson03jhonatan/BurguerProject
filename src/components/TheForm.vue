@@ -4,80 +4,83 @@
       <span v-html="alert.message"></span>
     </base-message>
 
-    <div>
-      <Form class="buguer-form" @submit="sendBurguerData" v-slot="{ errors, meta }">
 
-        <!-- Name -->
-        <div class="container-forms bottom-margin-medium">
-          <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
-          <Field type="text" name="name" placeholder="Ex: Naruto..." rules="required|min: 3|max: 32" v-model="name"
-            :class="[
-              errors.name ? 'border-error' : '',
-              meta.valid ? 'border-success' : '',
-            ]" />
+    <Form class="buguer-form" @submit="sendBurguerData" v-slot="{ errors, meta }">
 
-          <ErrorMessage name="name" as="div">
-            <span class="text-error text-small text-bold">Name is not valid</span>
-          </ErrorMessage>
-        </div>
-
-        <!-- Bread -->
-        <div class="container-forms bottom-margin-medium">
-          <label for="bread" class="bottom-margin-small padding-small">Choose your bread:</label>
-          <Field name="bread" as="select" rules="required" v-model="sendBread" v-slot="{ value }" :class="[
-            errors.bread ? 'border-error' : '',
+      <!-- Name -->
+      <div class="container-forms bottom-margin-medium">
+        <label for="name" class="bottom-margin-small padding-small">Write your name:</label>
+        <Field type="text" name="name" placeholder="Ex: Naruto..." rules="required|min: 3|max: 32" v-model="name"
+          :class="[
+            errors.name ? 'border-error' : '',
             meta.valid ? 'border-success' : '',
-          ]">
-            <option value="">Select your bread</option>
-            <option v-for="bread in getBreads" :key="bread.id" :value="bread.type"
-              :selected="value && value.includes(bread.type)">
-              {{ bread.type }}
-            </option>
+          ]" />
+
+        <ErrorMessage name="name" as="div">
+          <span class="text-error text-small text-bold">Name is not valid</span>
+        </ErrorMessage>
+      </div>
+
+      <!-- Bread -->
+      <div class="container-forms bottom-margin-medium">
+        <label for="bread" class="bottom-margin-small padding-small">Choose your bread:</label>
+        <Field name="bread" as="select" rules="required" v-model="sendBread" v-slot="{ value }" :class="[
+          errors.bread ? 'border-error' : '',
+          meta.valid ? 'border-success' : '',
+        ]">
+          <option value="">Select your bread</option>
+          <option v-for="bread in getBreads" :key="bread.id" :value="bread.type"
+            :selected="value && value.includes(bread.type)">
+            {{ bread.type }}
+          </option>
+        </Field>
+
+        <ErrorMessage name="bread" as="div">
+          <span class="text-error text-small text-bold">Bread is not valid</span>
+        </ErrorMessage>
+      </div>
+
+      <!-- Steak -->
+      <div class="container-forms bottom-margin-medium">
+        <label for="steak" class="bottom-margin-small padding-small">Choose your steak:</label>
+        <Field name="steak" as="select" rules="required" v-model="sendSteak" v-slot="{ value }" :class="[
+          errors.steak ? 'border-error' : '',
+          meta.valid ? 'border-success' : '',
+        ]">
+          <option value="">Select your steak</option>
+          <option v-for="steak in getSteaks" :key="steak.id" :value="steak.type"
+            :selected="value && value.includes(steak.type)">
+            {{ steak.type }}
+          </option>
+        </Field>
+
+        <ErrorMessage name="steak" as="div">
+          <span class="text-error text-small text-bold">Steak is not valid</span>
+        </ErrorMessage>
+      </div>
+
+      <!-- Options -->
+      <div class="container-forms container-optionals bottom-margin-medium">
+        <label class="opcionais bottom-margin-small padding-small">Choose your optinal ingredients:</label>
+        <div v-for="option in getOptions" :key="option.id" class="container-checkbox bottom-margin-medium">
+          <Field name="optionals" type="checkbox" v-slot="{ field }" :value="option.type" v-model="sendOptions"
+            @change="sendOptions.length < 3 ? errorOptions = false : errorOptions = true">
+            <input class="checkbox__input" type="checkbox" name="optionals" id="optionals" v-bind="field"
+              :value="option.type">
+            <span class="checkbox__span left-margin-small">{{ option.type }}</span>
           </Field>
-
-          <ErrorMessage name="bread" as="div">
-            <span class="text-error text-small text-bold">Bread is not valid</span>
-          </ErrorMessage>
         </div>
+        <span v-if="errorOptions" class="text-error text-small text-bold">Choose only two options</span>
+      </div>
 
-        <!-- Steak -->
-        <div class="container-forms bottom-margin-medium">
-          <label for="steak" class="bottom-margin-small padding-small">Choose your steak:</label>
-          <Field name="steak" as="select" rules="required" v-model="sendSteak" v-slot="{ value }" :class="[
-            errors.steak ? 'border-error' : '',
-            meta.valid ? 'border-success' : '',
-          ]">
-            <option value="">Select your steak</option>
-            <option v-for="steak in getSteaks" :key="steak.id" :value="steak.type"
-              :selected="value && value.includes(steak.type)">
-              {{ steak.type }}
-            </option>
-          </Field>
+      <div class="container-forms">
+        <button class="btn__submit text-medium" name="btn-submit" type="submit" title="Confirm" :disabled="errorOptions">
+          Create burguer
+        </button>
+      </div>
 
-          <ErrorMessage name="steak" as="div">
-            <span class="text-error text-small text-bold">Steak is not valid</span>
-          </ErrorMessage>
-        </div>
+    </Form>
 
-        <!-- Options -->
-        <div class="container-forms container-optionals bottom-margin-medium">
-          <label class="opcionais bottom-margin-small padding-small">Choose your optinal ingredients:</label>
-          <div v-for="option in getOptions" :key="option.id" class="container-checkbox bottom-margin-medium">
-            <Field name="optionals" type="checkbox" v-slot="{ field }" :value="option.type" v-model="sendOptions">
-              <input class="checkbox__input" type="checkbox" name="optionals" id="optionals" v-bind="field" :value="option.type">
-              <span class="checkbox__span left-margin-small">{{ option.type }}</span>
-            </Field>
-          </div>
-        </div>
-
-        <div class="container-forms">
-          <button class="btn__submit text-medium" name="btn-submit" type="submit" title="Confirm">
-            Create burguer
-          </button>
-        </div>
-
-      </Form>
-    </div>
   </div>
 </template>
 
@@ -106,17 +109,12 @@ export default {
       sendBread: null,
       sendSteak: null,
       sendOptions: [],
+
+      errorOptions: false,
     }
   },
   methods: {
     async sendBurguerData(values, { resetForm }) {
-
-      if (values.optionals && values.optionals.length > 2) {
-        return this.alert = { 
-          type: 'error', 
-          message: `Please, it's possible chosse only two options`
-        };
-      }
 
       const dataForm = {
         name: values.name,
@@ -195,18 +193,19 @@ label .opcionais {
 
 .container-checkbox {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: 50%;
 }
 
 .checkbox__span,
 .checkbox__input {
   width: auto;
-  font-weight: 600;
 }
 
 .checkbox__input {
   cursor: pointer;
+  font-weight: 400;
+
 }
 
 .btn__submit {
