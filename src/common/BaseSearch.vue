@@ -1,6 +1,5 @@
 <template>
   <div class="full">
-    <!-- <h4>Search bar | Filter by: Name - ID - Status</h4> -->
     <label for="search" class="text-bold text-medium"> Search your order:
       <input 
         name="search"
